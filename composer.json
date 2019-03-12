@@ -1,0 +1,6 @@
+{
+    "name": "ati-pc13/editando-salvar",
+    "autoload": {
+        "psr-4": {"Matheus\\": "src/"}
+    }
+}
