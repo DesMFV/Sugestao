@@ -1,0 +1,82 @@
+/*TODO PADRÃO*/
+html, body{
+    height: 100%;
+    margin: 0;
+}
+a{
+    text-decoration:none;
+}
+.pag{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.nav-principal{
+    position: relative;
+    top:20px;
+    left:35px;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home-logo{
+    width: 150px;
+}
+.function{
+    position: relative;
+    left:-25px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: brown;
+}
+.form-option{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 16px; 
+}
+.table-info{
+    width: 80%;
+    height: 100%;
+    background-image: url(../img/logo_graduacaoi-2.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/*MEDIAS*/
+
+@media (max-width: 480px){
+    /*CSS para este*/
+}
+
+/*ABAIXO DE 720 A PAGINA DEVE EXIBIR CAIXAS EM ESTRUTURA DE COLUNA*/
+
+@media (max-width: 720px){
+    /*CSS para este*/
+}
+
+/*ABAIXO DE 768 os links devem diminuir*/
+
+
+@media (max-width: 768px){
+   /*CSS para este*/
+}
+
+/*ipad*/
+
+@media (width: 768px) and (height: 1024px){
+    /*CSS para este*/
+}
+
+/*ipad pro*/
+
+@media (width: 1024px) and (height: 1366px){
+    /*CSS para este*/
+}
+
+/* CASO MAIOR */
+
+@media (min-width: 769px){
+    /*CSS para este*/
+}

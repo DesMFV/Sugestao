@@ -71,8 +71,6 @@ class UploadImagem
       echo "Não foi possível enviar o arquivo, tente novamente";
     }
 
-    print_r($_UP['pasta'] . $nome_final);die;
-
     return $_UP['pasta'] . $nome_final; 
 
 

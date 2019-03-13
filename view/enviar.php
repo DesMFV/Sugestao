@@ -3,6 +3,7 @@
 $sug = new Matheus\Models\Sugestao();
 
 if (isset($_FILES['arquivo'])) {
+  
   $upArquivo = new Matheus\Upload\UploadImagem();
 
   $arq = $_FILES['arquivo'];

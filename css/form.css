@@ -1,0 +1,352 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+.pag{
+            
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+.file{
+    width: 100%;
+}
+
+.pag-info{
+    
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.pag-banner{
+    right: 20px;
+    width: 50%;
+    height: 100%;
+    background-image: url(../img/logo_graduacaoi-2.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.box-form{
+  
+    width: 88%;
+    margin: 5% 0 5% 0;
+    justify-content: space-around;
+}
+.form-sugestao{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.foto-area{
+    margin: 0 0 20px 0;
+}
+
+.fileUpload {
+    position: relative;  
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/addFoto.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.upload { 
+    height: 50px;
+    widows: 50px;
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    margin: 0; 
+    padding: 0; 
+    font-size: 20px; 
+    cursor: pointer; 
+    opacity: 0; 
+    filter: alpha(opacity=0); 
+}
+
+.home{
+    width: 85%;
+}
+.box-home{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5% 0 5% 0;
+}
+.home-logo{
+    width: 150px;
+}
+.rede{
+    display: flex;
+    flex-direction: row;
+}
+.home-rede{
+    width: 2.5em;
+    margin: 0 0 0 6px;
+}
+.home-rede-y{
+    position: relative;
+    top: -4px;
+    width: 2.8em;
+    margin: 0 0 0 6px;
+}
+.form-item{
+    width: 100%;
+    height: 45px;
+    margin: 2%;
+    font-size: 16px;
+}
+.form-submit{
+
+    color:#a8a8a8;
+    font-size: 16px;
+    height: 40px;
+    width: 100%;
+    background-color: #e1e1e1;
+}
+.form-textarea{
+    height: 150px;
+    width: 100%;
+    margin: 3%;
+}
+.form-title{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 24px;
+}
+.form-legend{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 16px;
+}
+.div-of-form{
+    color: #e1e1e1;
+    height: 1px;
+    width: 100%;
+    background-color: #e1e1e1; 
+    margin-top: 7%;
+}
+
+
+@media (max-width: 480px){
+    .pag{
+        flex-direction: column;
+    }
+    .pag-banner{
+        width: 100%;
+        height: 50%;
+    }
+    .pag-info{
+        position: relative;
+        top:300px;
+        width: 100%;
+        height: 50%;
+    }
+    .box-home{
+        flex-direction: column;
+    }
+    .home-logo{
+        width:200px;
+        margin-top: 4%;
+    }
+    .home-rede{
+        width: 3em;
+        margin: 50px 0 20px 10px;
+    }
+    .home-rede-y{
+        width: 3.3em;
+        margin: 50px 0 0 6px;
+    }
+
+}
+
+/*ABAIXO DE 720 A PAGINA DEVE EXIBIR CAIXAS EM ESTRUTURA DE COLUNA*/
+
+@media (max-width: 720px){
+
+    .pag{
+        flex-direction: column;
+    }
+    .pag-banner{
+        width: 100%;
+        height: 50%;
+    }
+    .pag-info{
+        position: relative;
+        top:300px;
+        width: 100%;
+        height: 50%;
+    }
+    .box-home{
+        flex-direction: column;
+    }
+    .home-logo{
+        width:200px;
+        margin-top: 4%;
+    }
+    .home-rede{
+        width: 3em;
+        margin: 50px 0 20px 10px;
+    }
+    .home-rede-y{
+        width: 3.3em;
+        margin: 50px 0 0 6px;
+    }
+}
+
+/*ABAIXO DE 768 os links devem diminuir*/
+
+
+@media (max-width: 768px){
+    .home-logo{
+        width:150px;
+    }
+    
+}
+
+/*ipad*/
+
+@media (width: 768px) and (height: 1024px){
+    
+    .pag{
+        flex-direction: column;
+    }
+    .pag-info{
+        position: relative;
+        top: 200px;
+        width: 100%;
+    }
+    .pag-banner{
+        width: 100%;
+    }
+    .home-logo{
+        width:7em;
+    }
+}
+
+
+
+/* CASO MAIOR */
+
+/*ipad pro*/
+
+@media (width: 1024px) and (height: 1366px){
+    
+    .pag-info{
+        width: 100%;
+    }
+    .pag-banner{
+        width: 100%;
+    }
+    .home-logo{
+        width:7em;
+    }
+}
+
+@media (min-width: 769px){
+
+    html, body{
+        height: 100%;
+        margin: 0;
+    }
+    .pag{
+                
+        height: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        
+    }
+    .pag-info{
+        
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .pag-banner{
+        right: 20px;
+        width: 50%;
+        height: 100%;
+        background-image: url(../img/logo_graduacaoi-2.png) !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .box-form{
+      
+        display: flex;
+
+        width: 88%;
+        margin: 5% 0 5% 0;
+        justify-content: space-around;
+    }
+    .form-sugestao{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .home{
+        width: 85%;
+    }
+    .box-home{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 5% 0 5% 0;
+    }
+    .home-logo{
+        width:150px;
+    }
+    .rede{
+        display: flex;
+        flex-direction: row;
+    }
+    .form-item{
+        width: 100%;
+        height: 45px;
+        margin: 2%;
+        font-size: 16px;
+    }
+    .form-submit{
+    
+        color:#a8a8a8;
+        font-size: 16px;
+        height: 40px;
+        width: 100%;
+        background-color: #e1e1e1;
+    }
+    .form-textarea{
+        height: 150px;
+        width: 100%;
+        margin: 3%;
+    }
+    .form-title{
+        font-family: "Montserrat";
+        color:#8c3c9a;
+        font-size: 24px;
+    }
+    .form-legend{
+        font-family: "Montserrat";
+        color:#8c3c9a;
+        font-size: 16px;
+    }
+    .div-of-form{
+        color: #e1e1e1;
+        height: 1px;
+        width: 100%;
+        background-color: #e1e1e1; 
+        margin-top: 7%;
+    }
+
+}
