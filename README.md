@@ -1,6 +1,6 @@
 # Sugestão:
 
-Este projeto gera uma interface destinada ao público geral com o fim de, coletar e armazenar sugestões de melhorias em questões estruturais ou administrativas da Instituição Comunitária de Educação Superior Universidade Da Região da Campanha.
+Este projeto gera uma interface destinada ao público geral, com o fim de, coletar e armazenar sugestões de melhorias em questões estruturais ou administrativas da Instituição Comunitária de Educação Superior Universidade Da Região da Campanha.
 
 ## Este projeto utiliza as tecnologias:
 
@@ -26,7 +26,7 @@ Este projeto gera uma interface destinada ao público geral com o fim de, coleta
 
 * Crie uma base de dados nomeada ``` sug-base ``` .
 
-* Insira ```shell CREATE TABLE sugestao( id SEERIAL, imagem OID, sugestao VARCHAR(1000), email VARCHAR(50), nome_pessoa VARCHAR(50), assunto VARCHAR(20)); ``` no código sql da base de dados e exute.
+* Insira a seguinte linha no código sql da base de dados e execute``` CREATE TABLE sugestao( id SEERIAL, imagem OID, sugestao VARCHAR(1000), email VARCHAR(50), nome_pessoa VARCHAR(50), assunto VARCHAR(20)); ```.
 
 ### Passo 2:
 
