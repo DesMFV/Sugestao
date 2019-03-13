@@ -34,7 +34,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
 
 * No terminal acesse o diretório do projeto e execute o comando ``` php -S localhost:8080 ``` (insira a porta que preferir, neste exemplo a porta escolhida é 8080).
 
-* Abra o navegador e insira ``` localhost:8080/``` (insira a porta que definiu anteriormente no terminal, netse exemplo aporta escolhida é 8080).
+* Abra o navegador e insira ``` localhost:8080/``` (insira a porta que definiu anteriormente no terminal, neste exemplo a porta escolhida é 8080).
 
 # FIM.
 
