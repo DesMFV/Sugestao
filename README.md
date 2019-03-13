@@ -1,8 +1,8 @@
-#Sugestão:
+###Sugestão:
 
 Este projeto gera uma interface destinada ao público geral com o fim de, coletar e armazenar sugestões de melhorias em questões estruturais ou administrativas da Instituição Comunitária de Educação Superior Universidade Da Região da Campanha.
 
-##Este projeto utiliza as tecnologias:
+####Este projeto utiliza as tecnologias:
 
 * HTML5.
 * CSS.
@@ -10,11 +10,11 @@ Este projeto gera uma interface destinada ao público geral com o fim de, coleta
 * pgAdmin III.
 
 
-##Começando
+####Começando
 
-### Passo 1:
+##### Passo 1:
 
-#### Base de dados.
+###### Base de dados.
 
 * No pgAdmin defina as seguintes configurações para um novo servidor: 
 
@@ -24,17 +24,17 @@ Este projeto gera uma interface destinada ao público geral com o fim de, coleta
     * 4. User Name: postgres 
     * 5. Password=postgres 
 
-* Crie uma base de dados nomeada ```shell sug-base ``` .
+* Crie uma base de dados nomeada ``` sug-base ``` .
 
 * Insira ```shell CREATE TABLE sugestao( id SEERIAL, imagem OID, sugestao VARCHAR(1000), email VARCHAR(50), nome_pessoa VARCHAR(50), assunto VARCHAR(20)); ``` no código sql da base de dados e exute.
 
-### Passo 2:
+##### Passo 2:
 
-#### Execução local.
+###### Execução local.
 
-* No terminal acesse o diretório do projeto e execute o comando ```shell php -S localhost:8080 ``` (insira a porta que preferir, neste exemplo a porta escolhida é 8080).
+* No terminal acesse o diretório do projeto e execute o comando ``` php -S localhost:8080 ``` (insira a porta que preferir, neste exemplo a porta escolhida é 8080).
 
-* Abra o navegador e insira ```shell localhost:8080/```.
+* Abra o navegador e insira ``` localhost:8080/```.
 
-#FIM.
+###FIM.
 
