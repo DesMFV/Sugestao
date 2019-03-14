@@ -19,4 +19,13 @@ class Conexao{
         pg_query($this->dbconn, "commit");
     }
 
+    // getters e setters
+
+    public function getNome(){
+        $sql1 = "select nome_pessoa from sugestao";
+        $res1 = pg_query($this->dbconn,$sql1) or die(pg_last_error($this->dbconn));
+        $nomes = array($res1);
+        return $nomes;
+    }
+
 }
