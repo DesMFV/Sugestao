@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+<link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="css-meu/form.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-<head>
-    <link rel="stylesheet" href="../css-meu/form.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administrador</title>
-</head>
 <div class="pag">
-
 
     <div class="pag-banner">
 
     </div>
-
     <!-- ============= inicio ÁREA INTERAÇÃO =============-->
     <div class="pag-info">
+
+
+
+        <?php
+        
+        ?>
+        <script>
+            Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'error'
+            )
+        </script>
 
         <!-- ============= inicio INTERAÇÃO =============-->
         <div class="box-form">
@@ -28,20 +33,20 @@
 
                 <h1 class="form-title">Deixe sua sugestão</h1>
 
-                <input class="form-item" type="text" name="txtNome" placeholder="Nome Completo">
+                <input class="form-item" type="text" name="txtNome" placeholder="Nome Completo" required>
 
-                <input class="form-item" type="email" name="email" placeholder="E-mail">
+                <input class="form-item" type="email" name="email" placeholder="E-mail" required>
 
                 <label class="form-legend" for="asdf">Assunto</label>
 
-                <select class="form-item" id="asdf" name="assunto">
+                <select class="form-item" id="asdf" name="assunto" requrired>
                     <option value="Infraestrutura">Infraestrutura</option>
                     <option value="Atendimento">Atendimento</option>
                     <option value="Educacional">Educacional</option>
                     <option value="Curso">Curso</option>
                 </select>
 
-                <textarea class="form-textarea" type="text" name="txtSugestao" placeholder="Sugestão"></textarea>
+                <textarea class="form-textarea" type="text" name="txtSugestao" placeholder="Sugestão" required></textarea>
 
                 <span class="form-legend">Foto</span>
                 <div class="foto-area">
@@ -49,11 +54,15 @@
                         <input type="file" name="arquivo" class="upload" />
                     </div>
                 </div>
-
                 <input class="form-submit" type="submit" value="Enviar">
 
-
             </form>
+
+
+
+
+
+
             <!-- ============= fim SUGESTÃO =============-->
 
 

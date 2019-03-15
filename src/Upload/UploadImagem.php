@@ -68,6 +68,7 @@ class UploadImagem
       echo '<a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>';
     } else {
       // Não foi possível fazer o upload, provavelmente a pasta está incorreta
+      
       echo "Não foi possível enviar o arquivo, tente novamente";
     }
 

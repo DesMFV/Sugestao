@@ -16,6 +16,7 @@ class Sugestao
     private $sugestao;
     private $nome_ps;
     private $foto;
+    private $msg;
 
 
 
@@ -94,15 +95,19 @@ class Sugestao
         $e = $this->email;
         $n = $this->nome_ps;
         $a = $this->assunto;
+        $ex = 1;
 
-        $oid = pg_lo_import($dbconn, $this->foto);
+        $img = $this->foto;
         
-        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto)values('$oid','$s','$e','$n','$a')";
+        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto,excluido)values('$img','$s','$e','$n','$a','$ex')";
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
 
-        echo $res1;
+        $this->msg = $res1;
+
+
+
     }
 
     public function update()

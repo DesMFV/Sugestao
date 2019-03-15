@@ -95,20 +95,20 @@
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             <li class="nav-item">
+                <div class="admin-perfil">
+                    <div class="box-ft">
+                    </div>
+                    <div class="admin-descricao">
+                        <span class="des-nome">
+                            Nome teste
+                        </span>
+                        <span class="des-legenda">
+                            legenda teste
+                        </span>
+                    </div>
+                </div>
                 <a class="nav-link" href="https://www.urcamp.edu.br/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <div class="admin-perfil">
-                        <div class="box-ft">
-                        </div>
-                        <div class="admin-descricao">
-                            <span class="des-nome">
-                                Nome teste
-                            </span>
-                            <span class="des-legenda">
-                                legenda teste
-                            </span>
-                        </div>
-                    </div>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -132,12 +132,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Sugestões</span></a>
+                    <span>Entrada</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Andamento</span></a>
+                    <span>Arquivadas</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
@@ -173,16 +173,18 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Assunto</th>
                                         <th>Sugestão</th>
                                         <th>Nome</th>
                                         <th>E-mail</th>
+                                        <th class="th-tb">Anexo</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    
+
                                     $conexao = "host=localhost dbname=sug-base port=5432 user=postgres password=postgres";
                                     $db = pg_connect($conexao); // aqui ele executa a conexão com o DNS da variavel $conexao
 
@@ -190,20 +192,50 @@
                                     $resultado = pg_query($db, $query); // Executa a query $query na conexão $db
 
                                     while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
-                                      // Escreve na página o retorno para cada registro trazido pela query
-                                      $a = $linha['assunto'];
-                                      $s = $linha['sugestao'];
-                                      $n = $linha['nome_pessoa'];
-                                      $e = $linha['email'];
-                                      echo' <tr>
-                                              <td>'."$a".'</td>
-                                              <td>'."$s".'</td>
-                                              <td>'."$n".'</td>
-                                              <td>'."$e".'</td>
+                                        // Escreve na página o retorno para cada registro trazido pela query
+                                        $boo = $linha['excluido'];
+                                        if ($boo != "f") {
+                                            continue;
+                                            echo ' <tr>
+                                              <td>' . "excluido" . '</td>
+                                              <td>' . "excluido" . '</td>
+                                              <td>' . "excluido" . '</td>
+                                              <td>' . "excluido" . '</td>
+                                              <td>' . "excluido" . '</td>
+                                              <td> excluido </td>
                                             </tr> ';
+                                        } else {
+                                            $id = $linha['id'];
+                                            $a = $linha['assunto'];
+                                            $s = $linha['sugestao'];
+                                            $n = $linha['nome_pessoa'];
+                                            $e = $linha['email'];
+                                            $i = '../' . $linha['imagem'];
+                                            echo ' <tr>
+                                                  <td>' . "$id" . '</td>
+                                                  <td>' . "$a" . '</td>
+                                                  <td>' . "$s" . '</td>
+                                                  <td>' . "$n" . '</td>
+                                                  <td>' . "$e" . '</td>
+                                                  <td class="td-img-tb">' . "<img class='img-table' src='$i'>" . '</td>
+
+                                                  <td class="td-ex-tb">
+
+                                                  <form method="POST" action="?pagina=excluir&?id="$id">
+                                                  <input type="submit" value="" class="btn-tb" href="excluir.php">
+                                                  </form>
+
+                                                  <form method="POST" action="?pagina=arquivar&?id="$id">
+                                                  <input type="submit" class="btn-tb" href="arquivar.php">
+                                                  <img class="i-ex"src="../img/arquivar.png">
+                                                  </form>
+
+                                                  </td>
+                                                </tr> ';
+                                        }
                                     }
                                     pg_close($db); // Fecha a conexão com a $db
-                                    
+
                                     ?>
 
                                 </tbody>

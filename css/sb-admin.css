@@ -47,6 +47,32 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.btn-tb{
+  border-radius: 50px;
+  width:2.5em;
+  height: 2.5em;
+  display: flex;
+  background-image: url(img/excluir.png) !important;
+}
+.i-ex{
+  position: relative;
+  left: -5px;
+  width:35px;
+  height: 35px;
+}
+.th-tb{
+  width: 50px;
+}
+.td-ex-tb{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 110px;
+}
+.img-table{
+  width: 90px;
+  height: 80px;
+}
 
 .logo-home{
   width: 150px;
@@ -54,19 +80,22 @@
 .admin-perfil{
   display: flex;
   flex-direction: row;
-  width: 210px;
-  height: 50px;
+  width: 90%;
+  height: 55px;
   border-bottom: 10px;
   background-color: rgb(45, 61, 46);
   justify-content: start;
   align-items: center;
   flex-direction: row;
   border-radius: 10px;
+  position: relative;
+  top: 25%;
+  left: 4%;
 }
 .box-ft{
   display: flex;
-  width: 20%;
-  height: 80%;
+  width: 53px;
+  height: 45px;
   justify-content: start;
   align-items: center;
   background-color: brown;
@@ -89,9 +118,8 @@
 .des-nome{
   font-family: "Montserrat";
   color: #ffffff;
-  font-size: 20px;
+  font-size: 100%;
 }
-
 
 html {
   font-family: sans-serif;
@@ -10754,7 +10782,7 @@ footer.sticky-footer .copyright {
 
 @media (min-width: 768px) {
   footer.sticky-footer {
-    width: calc(100% - 225px);
+    width: calc(100% - 245px);
   }
 }
 
