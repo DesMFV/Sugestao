@@ -26,7 +26,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
 
 * Crie uma base de dados nomeada ``` sug-base ``` .
 
-* Insira a seguinte linha no código sql da base de dados e execute``` CREATE TABLE sugestao( id SERIAL, imagem OID, sugestao VARCHAR(1000), email VARCHAR(50), nome_pessoa VARCHAR(50), assunto VARCHAR(20)); ```.
+* Insira a seguinte linha no código sql da base de dados e execute``` CREATE TABLE sugestao( id SERIAL, imagem varchar(200), sugestao VARCHAR(1000), email VARCHAR(50), nome_pessoa VARCHAR(50), assunto VARCHAR(20), excluido BOOLEAN); ```.
 
 ### Passo 2:
 
