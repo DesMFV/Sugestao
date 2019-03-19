@@ -5,8 +5,8 @@
 
     $objEx = new Matheus\Models\Sugestao();
 
-    $objEx->tornarExcluido($id);
+    $objEx->tornarArquivado($id);
 
     header('Location: view/admin.php');
 
-
+?>

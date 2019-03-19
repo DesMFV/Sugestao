@@ -17,6 +17,7 @@ require __DIR__ . '/vendor/autoload.php';
 
     <?php
     $acao = isset($_GET['pagina']) ? $_GET['pagina'] : null;
+    
     if($acao) {
         include "view/{$acao}.php";
     } else {

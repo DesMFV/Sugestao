@@ -1,3 +1,6 @@
+
+<script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+
 <?php
 
 $sug = new Matheus\Models\Sugestao();
@@ -28,6 +31,8 @@ $sug->setAssunto($_POST["assunto"]);
 $sug->setSugestao($_POST["txtSugestao"]);
 //até aqui <--
 
-
+include 'view/formulario.php';
 //vai resumir (classe sugestão->save())
 $sug->save();
+
+

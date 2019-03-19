@@ -1,4 +1,4 @@
-<script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+
 <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
 <link rel="stylesheet" href="css-meu/form.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -12,17 +12,6 @@
     <div class="pag-info">
 
 
-
-        <?php
-        
-        ?>
-        <script>
-            Swal.fire(
-                'Good job!',
-                'You clicked the button!',
-                'error'
-            )
-        </script>
 
         <!-- ============= inicio INTERAÇÃO =============-->
         <div class="box-form">

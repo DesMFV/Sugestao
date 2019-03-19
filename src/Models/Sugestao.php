@@ -11,6 +11,7 @@ class Sugestao
     //$s = $_POST[txtSugestao];
     //$n = $_POST[txtNome];
 
+    private $id;
     private $email;
     private $assunto;
     private $sugestao;
@@ -22,7 +23,14 @@ class Sugestao
 
 #=============================================== getters e setters ============================================#
 
-
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($id_in)
+    {
+        $this->id  = $id_in;
+    }
 
     //============= getter setter Email ==============
 
@@ -95,20 +103,101 @@ class Sugestao
         $e = $this->email;
         $n = $this->nome_ps;
         $a = $this->assunto;
-        $ex = 1;
+        $ex = 0;
+        $arq = 0;
 
         $img = $this->foto;
         
-        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto,excluido)values('$img','$s','$e','$n','$a','$ex')";
+        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto,excluido,arquivado)values('$img','$s','$e','$n','$a','$ex', '$arq')";
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+        pg_query($dbconn, "commit");
+
+        $this->msg = $res1;
+        
+        echo
+        "<script>
+        Swal.fire(
+            'Sugestão enviada com sucesso!',
+            '',
+            'sucess'
+        )
+        </script>"
+        ;
+
+    }
+
+    public function tornarExcluido($id)
+    {
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $sql1 = "UPDATE sugestao SET excluido = TRUE WHERE id = '$id';";
+
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
 
         $this->msg = $res1;
 
-
-
+        echo
+        "<script>
+        Swal.fire(
+            'Registro de tal tal excluido com sucesso!',
+            '',
+            'sucess'
+        )
+        </script>"
+        ; 
     }
+
+    public function tornarArquivado($id)
+    {
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $sql1 = "UPDATE sugestao SET arquivado = TRUE WHERE id = '$id';";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+        pg_query($dbconn, "commit");
+
+        $this->msg = $res1;
+    }
+
+    public function tornarResgatado($id)
+    {
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $sql1 = "UPDATE sugestao SET excluido = FALSE WHERE id = '$id';";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+        pg_query($dbconn, "commit");
+
+        $this->msg = $res1;
+
+        echo
+        "<script>
+        Swal.fire(
+            'Registro de tal tal excluido com sucesso!',
+            '',
+            'sucess'
+        )
+        </script>"
+        ; 
+    }
+
 
     public function update()
     {

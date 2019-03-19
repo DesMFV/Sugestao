@@ -52,38 +52,15 @@
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown no-arrow mx-1">
+
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger">9+</span>
+                    <span>Logar</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
-                    <span class="badge badge-danger">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </div>
             </li>
         </ul>
@@ -130,17 +107,17 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="admin.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Entrada</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="arquivados.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Arquivadas</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="excluidos.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Lixo</span></a>
             </li>
@@ -194,7 +171,8 @@
                                     while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
                                         // Escreve na página o retorno para cada registro trazido pela query
                                         $boo = $linha['excluido'];
-                                        if ($boo != "f") {
+                                        $boo2 = $linha['arquivado'];
+                                        if ($boo != "f" || $boo2 != "f") {
                                             continue;
                                             echo ' <tr>
                                               <td>' . "excluido" . '</td>
@@ -205,33 +183,36 @@
                                               <td> excluido </td>
                                             </tr> ';
                                         } else {
+
                                             $id = $linha['id'];
                                             $a = $linha['assunto'];
                                             $s = $linha['sugestao'];
                                             $n = $linha['nome_pessoa'];
                                             $e = $linha['email'];
                                             $i = '../' . $linha['imagem'];
-                                            echo ' <tr>
-                                                  <td>' . "$id" . '</td>
-                                                  <td>' . "$a" . '</td>
-                                                  <td>' . "$s" . '</td>
-                                                  <td>' . "$n" . '</td>
-                                                  <td>' . "$e" . '</td>
-                                                  <td class="td-img-tb">' . "<img class='img-table' src='$i'>" . '</td>
 
-                                                  <td class="td-ex-tb">
+                                            echo " <tr>
+                                                  <td>{$id}</td>
+                                                  <td>{$a}</td>
+                                                  <td>{$s}</td>
+                                                  <td>{$n}</td>
+                                                  <td>{$e}</td>
+                                                  
+                                                  <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                  </td>
 
-                                                  <form method="POST" action="?pagina=excluir&?id="$id">
-                                                  <input type="submit" value="" class="btn-tb" href="excluir.php">
-                                                  </form>
+                                                  <td class=\"td-ex-tb\">
 
-                                                  <form method="POST" action="?pagina=arquivar&?id="$id">
-                                                  <input type="submit" class="btn-tb" href="arquivar.php">
-                                                  <img class="i-ex"src="../img/arquivar.png">
-                                                  </form>
+                                                        <a href=\"../index.php?pagina=excluir&id={$id}\">
+                                                        EXCLUIR
+                                                        </a>
+
+                                                        <a href=\"../index.php?pagina=arquivar&id={$id}\">
+                                                        ARQUIVAR
+                                                        </a>
 
                                                   </td>
-                                                </tr> ';
+                                                  </tr> ";
                                         }
                                     }
                                     pg_close($db); // Fecha a conexão com a $db
@@ -310,4 +291,4 @@
 
 </body>
 
-</html> 
+</ht ml>

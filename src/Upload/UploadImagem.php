@@ -64,8 +64,7 @@ class UploadImagem
     // Depois verifica se é possível mover o arquivo para a pasta escolhida
     if (move_uploaded_file($arquivo['tmp_name'], $_UP['pasta'] . $nome_final)) {
       // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo
-      echo "Upload efetuado com sucesso!";
-      echo '<a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>';
+      
     } else {
       // Não foi possível fazer o upload, provavelmente a pasta está incorreta
       
