@@ -16,6 +16,7 @@ require __DIR__ . '/vendor/autoload.php';
 <body>
 
     <?php
+    
     $acao = isset($_GET['pagina']) ? $_GET['pagina'] : null;
     
     if($acao) {

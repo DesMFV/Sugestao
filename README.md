@@ -23,6 +23,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
     * 3. Maintenence BD: postgres
     * 4. User Name: postgres 
     * 5. Password=postgres 
+    * 6. PHP 7
 
 * Crie uma base de dados nomeada ``` sug-base ``` .
 

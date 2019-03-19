@@ -127,7 +127,7 @@ class Sugestao
 
     }
 
-    public function tornarExcluido($id)
+    public function tornarExcluido($id,$arq)
     {
         $conexao = new Conexao();
 
@@ -135,11 +135,24 @@ class Sugestao
 
         pg_query($dbconn, "begin");
 
-        $sql1 = "UPDATE sugestao SET excluido = TRUE WHERE id = '$id';";
+        if($arq='t'){
 
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+            $sql1 = "UPDATE sugestao SET excluido = TRUE, arquivado = FALSE WHERE id = '$id';";
+
+            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
-        pg_query($dbconn, "commit");
+            pg_query($dbconn, "commit");
+
+        }
+        else{
+
+            $sql1 = "UPDATE sugestao SET excluido = TRUE WHERE id = '$id';";
+
+            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+            pg_query($dbconn, "commit");
+
+        }
 
         $this->msg = $res1;
 
@@ -171,7 +184,7 @@ class Sugestao
         $this->msg = $res1;
     }
 
-    public function tornarResgatado($id)
+    public function tornarResgatado($id,$arq)
     {
         $conexao = new Conexao();
 
@@ -179,11 +192,25 @@ class Sugestao
 
         pg_query($dbconn, "begin");
 
-        $sql1 = "UPDATE sugestao SET excluido = FALSE WHERE id = '$id';";
 
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        if($arq='t'){
+
+            $sql1 = "UPDATE sugestao SET excluido = FALSE, arquivado = FALSE WHERE id = '$id';";
+
+            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
-        pg_query($dbconn, "commit");
+            pg_query($dbconn, "commit");
+
+        }
+        else{
+
+            $sql1 = "UPDATE sugestao SET excluido = FALSE WHERE id = '$id';";
+
+            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+            pg_query($dbconn, "commit");
+            
+        }
 
         $this->msg = $res1;
 
@@ -198,15 +225,42 @@ class Sugestao
         ; 
     }
 
-
-    public function update()
+    public function deletar($id)
     {
-        // logica para atualizar cliente no banco
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $sql1 = "DELETE FROM sugestao WHERE id = '$id';";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+        pg_query($dbconn, "commit");
+
+        $this->msg = $res1;
     }
 
-    public function remove()
+    public function pesquisa($tp)
     {
-        // logica para remover cliente do banco
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $sql1 = "SELECT * FROM sugestao WHERE id = '$tp'
+        OR sugestao ilike '%.$tp.%' 
+        OR email ilike '%.$tp.%' 
+        OR nome_pessoa ilike '%.$tp.%' 
+        OR assunto ilike '%.$tp.%';";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+        
+        pg_query($dbconn, "commit");
+
+        return $res1;
     }
 
     public function listAll()

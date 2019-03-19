@@ -38,15 +38,13 @@
         </button>
 
         <!-- Navbar Search -->
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
+        <form action="pesquisa.php" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            
+                <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
+                
+                    <input type="submit" class="btn btn-primary" value="Procurar">
+                
+           
         </form>
 
         <!-- Navbar -->
@@ -54,7 +52,7 @@
             <li class="nav-item dropdown no-arrow mx-1">
 
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>Logar</span>
+                   
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <a class="dropdown-item" href="#">Action</a>
@@ -78,9 +76,6 @@
                     <div class="admin-descricao">
                         <span class="des-nome">
                             Nome teste
-                        </span>
-                        <span class="des-legenda">
-                            legenda teste
                         </span>
                     </div>
                 </div>
@@ -109,7 +104,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="admin.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Entrada</span></a>
+                    <span class="tab-selected">Entrada</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="arquivados.php">
@@ -134,10 +129,12 @@
 
                 <!-- Breadcrumbs-->
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">Tables</li>
+                    <!--
+                        <li class="breadcrumb-item">
+                            <a href="#">Dashboard</a>
+                        </li> 
+                    -->
+                    <li class="breadcrumb-item active">Entrada</li>
                 </ol>
 
                 <!-- DataTables Example -->
@@ -203,11 +200,11 @@
 
                                                   <td class=\"td-ex-tb\">
 
-                                                        <a href=\"../index.php?pagina=excluir&id={$id}\">
+                                                        <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
                                                         EXCLUIR
                                                         </a>
 
-                                                        <a href=\"../index.php?pagina=arquivar&id={$id}\">
+                                                        <a href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
                                                         ARQUIVAR
                                                         </a>
 

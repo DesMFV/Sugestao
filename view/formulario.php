@@ -17,7 +17,7 @@
         <div class="box-form">
 
             <!-- ============= inicio SUGESTÃO =============-->
-            <form class="form-sugestao" method="POST" action="?pagina=enviar" enctype="multipart/form-data">
+            <form class="form-sugestao" method="POST" action="?pagina=SugestaoController&acao=enviar" enctype="multipart/form-data">
 
 
                 <h1 class="form-title">Deixe sua sugestão</h1>

@@ -1,6 +1,8 @@
 
 <link href="../css/sb-admin.css" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 
 <body id="page-top">
 
@@ -13,15 +15,9 @@
     </button>
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
+    <form action="pesquisa.php" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
+        <input type="submit" class="btn btn-primary" value="Procurar">
     </form>
 
     <!-- Navbar -->
@@ -29,7 +25,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
 
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Logar</span>
+                
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                 <a class="dropdown-item" href="#">Action</a>
@@ -89,7 +85,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="arquivados.php">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Arquivadas</span></a>
+                <span class="tab-selected">Arquivadas</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="excluidos.php">
@@ -109,10 +105,12 @@
 
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item active">Tables</li>
+                <!--
+                        <li class="breadcrumb-item">
+                            <a href="#">Dashboard</a>
+                        </li> 
+                    -->
+                    <li class="breadcrumb-item active">Arquivadas</li>
             </ol>
 
             <!-- DataTables Example -->
@@ -167,12 +165,8 @@ while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este l
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=excluir&id={$id}\">
+                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=arquivados\">
                     EXCLUIR
-                    </a>
-
-                    <a href=\"arquivar.php?id={$id}\">
-                    ARQUIVAR
                     </a>
 
               </td>

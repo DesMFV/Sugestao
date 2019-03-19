@@ -1,4 +1,3 @@
-
 <link href="../css/sb-admin.css" rel="stylesheet">
 <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
 
@@ -14,7 +13,7 @@
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-
+    
     <!-- Navbar Search -->
     <form action="pesquisa.php" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
@@ -91,7 +90,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="excluidos.php">
                 <i class="fas fa-fw fa-table"></i>
-                <span class="tab-selected">Lixo</span></a>
+                <span>Lixo</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="tables.html">
@@ -135,18 +134,60 @@
                             </thead>
                             <tbody>
 
-                            <?php
+<?php
+
+$tp = $_GET['texto-pesquisa'];
+
 $conexao = "host=localhost dbname=sug-base port=5432 user=postgres password=postgres";
-$db = pg_connect($conexao); // aqui ele executa a conexão com o DNS da variavel $conexao
+$db = pg_connect($conexao); 
 
-$query = "select * from sugestao";
-$resultado = pg_query($db, $query); // Executa a query $query na conexão $db
+$sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
+OR sugestao ilike '%$tp%' 
+OR email ilike '%$tp%' 
+OR nome_pessoa ilike '%$tp%' 
+OR assunto ilike '%$tp%'";
 
-while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
-    // Escreve na página o retorno para cada registro trazido pela query
-    $boo = $linha['excluido'];
-    $boo2 = $linha['arquivado'];
-    if ($boo != "f") { 
+
+$resultado = pg_query($db, $sql1); 
+
+while ($linha = pg_fetch_array($resultado)) { 
+
+    $excluido = $linha['excluido'];
+    $arquivado = $linha['arquivado'];
+    if ($excluido != "t" && $arquivado != "t") { 
+        
+        $id = $linha['id'];
+        $a = $linha['assunto'];
+        $s = $linha['sugestao'];
+        $n = $linha['nome_pessoa'];
+        $e = $linha['email'];
+        $i = '../' . $linha['imagem'];
+
+        echo " <tr>
+        <td>{$id}</td>
+        <td>{$a}</td>
+        <td>{$s}</td>
+        <td>{$n}</td>
+        <td>{$e}</td>
+        
+        <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+        </td>
+        
+        <td class=\"td-ex-tb\">
+        
+        <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
+        EXCLUIR
+        </a>
+        
+        <a href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
+        ARQUIVAR
+        </a>
+        
+        </td>
+        </tr> ";
+    } 
+    
+    else if($excluido != "f" && $arquivado != "t"){
         
         $id = $linha['id'];
         $a = $linha['assunto'];
@@ -177,9 +218,41 @@ while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este l
 
               </td>
               </tr> ";
-    } else {
+        
+    }
+    else if($arquivado != "f" && $excluido != "t"){
+        
+        $id = $linha['id'];
+        $a = $linha['assunto'];
+        $s = $linha['sugestao'];
+        $n = $linha['nome_pessoa'];
+        $e = $linha['email'];
+        $i = '../' . $linha['imagem'];
+
+        echo " <tr>
+              <td>{$id}</td>
+              <td>{$a}</td>
+              <td>{$s}</td>
+              <td>{$n}</td>
+              <td>{$e}</td>
+              
+              <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+              </td>
+
+              <td class=\"td-ex-tb\">
+
+                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=arquivados\">
+                    EXCLUIR
+                    </a>
+
+              </td>
+              </tr> ";
+
+    }
+    else{
         continue;
     }
     pg_close($db); // Fecha a conexão com a $db
 }
+
 ?>

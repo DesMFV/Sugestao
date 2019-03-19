@@ -47,6 +47,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.tab-selected{
+  color: rgb(219, 126, 3);
+}
 .btn-tb{
   border-radius: 50px;
   width:2.5em;
