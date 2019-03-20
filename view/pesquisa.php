@@ -138,22 +138,21 @@
 
 $tp = $_GET['texto-pesquisa'];
 
-$conexao = "host=localhost dbname=sug-base port=5432 user=postgres password=postgres";
-$db = pg_connect($conexao); 
 
-$sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
-OR sugestao ilike '%$tp%' 
-OR email ilike '%$tp%' 
-OR nome_pessoa ilike '%$tp%' 
-OR assunto ilike '%$tp%'";
+require '../vendor/autoload.php';
+use Matheus\Models\Sugestao;
+
+$sug = new Matheus\Models\Sugestao();
+
+$resultado = $sug->pesquisa($tp); 
 
 
-$resultado = pg_query($db, $sql1); 
 
 while ($linha = pg_fetch_array($resultado)) { 
 
     $excluido = $linha['excluido'];
     $arquivado = $linha['arquivado'];
+
     if ($excluido != "t" && $arquivado != "t") { 
         
         $id = $linha['id'];
@@ -174,12 +173,15 @@ while ($linha = pg_fetch_array($resultado)) {
         </td>
         
         <td class=\"td-ex-tb\">
-        
-        <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
-        EXCLUIR
+
+       
+        <a class=\"a-acao\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=pesquisa\">
+       
         </a>
         
-        <a href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
+        
+        
+        <a class=\"a-acao-a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=pesquisa\">
         ARQUIVAR
         </a>
         
@@ -208,11 +210,11 @@ while ($linha = pg_fetch_array($resultado)) {
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=deletar&id={$id}&origem=excluidos\">
+                    <a href=\"../index.php?pagina=SugestaoController&acao=deletar&id={$id}&origem=pesquisa\">
                     DELETAR
                     </a>
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&arq={$boo2}&origem=excluidos\">
+                    <a href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&arq={$arquivado}&origem=pesquisa\">
                     RESGATAR
                     </a>
 
@@ -241,7 +243,7 @@ while ($linha = pg_fetch_array($resultado)) {
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=arquivados\">
+                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=pesquisa\">
                     EXCLUIR
                     </a>
 
@@ -252,7 +254,6 @@ while ($linha = pg_fetch_array($resultado)) {
     else{
         continue;
     }
-    pg_close($db); // Fecha a conexão com a $db
 }
 
 ?>

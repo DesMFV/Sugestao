@@ -37,7 +37,7 @@
 
                 <textarea class="form-textarea" type="text" name="txtSugestao" placeholder="Sugestão" required></textarea>
 
-                <span class="form-legend">Foto</span>
+                <span class="form-legend">Anexo</span>
                 <div class="foto-area">
                     <div class="fileUpload">
                         <input type="file" name="arquivo" class="upload" />

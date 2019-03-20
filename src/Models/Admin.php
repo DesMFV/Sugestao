@@ -13,9 +13,8 @@ class Admin
 
     private $id;
     private $nome;
-    private $assunto;
-    private $sugestao;
-    private $nome_ps;
+    private $login;
+    private $senha;
     private $foto;
     private $msg;
 
@@ -126,3 +125,4 @@ class Admin
         ;
 
     }
+}

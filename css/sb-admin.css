@@ -47,6 +47,26 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.a-acao{
+  width: 3em;
+  height: 3em;
+  background-image: url(../img/excluir.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.a-acao-e{
+
+  width: 100px;
+  height: 100px;
+  background-image: url(../img/excluir.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .tab-selected{
   color: rgb(219, 126, 3);
 }

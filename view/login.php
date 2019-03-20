@@ -8,8 +8,9 @@
 <div class="container">
     <div class="card card-login mx-auto text-center bg-dark">
         <div class="card-header mx-auto bg-dark">
-            <span> <img src="../img/logo-branco.png" class="w-75" alt="Logo"> </span><br/>
-<!--            <h1>--><?php //echo $message?><!--</h1>-->
+            <span> <img src="../img/logo-branco.png" class="w-75" alt="Logo"> </span><br />
+            <!--            <h1>--><?php  ?>
+            <!--</h1>-->
 
         </div>
         <div class="card-body">
@@ -18,21 +19,23 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" name="email" class="form-control" placeholder="Username">
+                    <input type="text" name="email" class="form-control" placeholder="Nome de Usuário">
                 </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Senha">
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn">
+                <div class="form-group-sub">
+                   
+                        <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn">
+                   
                 </div>
 
             </form>
         </div>
     </div>
-</div>
+</div> 

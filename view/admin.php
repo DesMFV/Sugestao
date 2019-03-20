@@ -2,6 +2,8 @@
 <html lang="en">
 <?php
 
+
+
 ?>
 
 <head>
@@ -159,16 +161,17 @@
                                 <tbody>
                                     <?php
 
-                                    $conexao = "host=localhost dbname=sug-base port=5432 user=postgres password=postgres";
-                                    $db = pg_connect($conexao); // aqui ele executa a conexão com o DNS da variavel $conexao
+                                    require '../vendor/autoload.php';
+                                    use Matheus\Models\Sugestao;
 
-                                    $query = "select * from sugestao";
-                                    $resultado = pg_query($db, $query); // Executa a query $query na conexão $db
+                                    $sug = new Matheus\Models\Sugestao();
 
-                                    while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
+                                    $resultado = $sug->listAll();
+
+                                    while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
                                         // Escreve na página o retorno para cada registro trazido pela query
-                                        $boo = $linha['excluido'];
-                                        $boo2 = $linha['arquivado'];
+                                        $boo = $linha->excluido;
+                                        $boo2 = $linha->arquivado;
                                         if ($boo != "f" || $boo2 != "f") {
                                             continue;
                                             echo ' <tr>
@@ -181,12 +184,12 @@
                                             </tr> ';
                                         } else {
 
-                                            $id = $linha['id'];
-                                            $a = $linha['assunto'];
-                                            $s = $linha['sugestao'];
-                                            $n = $linha['nome_pessoa'];
-                                            $e = $linha['email'];
-                                            $i = '../' . $linha['imagem'];
+                                            $id = $linha->id;
+                                            $a = $linha->assunto;
+                                            $s = $linha->sugestao;
+                                            $n = $linha->nome_pessoa;
+                                            $e = $linha->email;
+                                            $i = '../' . $linha->imagem;
 
                                             echo " <tr>
                                                   <td>{$id}</td>
@@ -212,7 +215,6 @@
                                                   </tr> ";
                                         }
                                     }
-                                    pg_close($db); // Fecha a conexão com a $db
 
                                     ?>
 
@@ -288,4 +290,4 @@
 
 </body>
 
-</ht ml>
+</html>

@@ -14,6 +14,8 @@ class Sugestao
     private $id;
     private $email;
     private $assunto;
+    private $arquivado;
+    private $excluido;
     private $sugestao;
     private $nome_ps;
     private $foto;
@@ -248,24 +250,37 @@ class Sugestao
 
         $dbconn = $conexao->conectar();
 
-        pg_query($dbconn, "begin");
 
-        $sql1 = "SELECT * FROM sugestao WHERE id = '$tp'
-        OR sugestao ilike '%.$tp.%' 
-        OR email ilike '%.$tp.%' 
-        OR nome_pessoa ilike '%.$tp.%' 
-        OR assunto ilike '%.$tp.%';";
+        $sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
+        OR sugestao ilike '%$tp%' 
+        OR email ilike '%$tp%' 
+        OR nome_pessoa ilike '%$tp%' 
+        OR assunto ilike '%$tp%';";
+
 
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
+
+        
 
         return $res1;
     }
 
     public function listAll()
     {
-        // logica para listar toodos os clientes do banco
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        $query = "select * from sugestao";
+        $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
+
+        pg_query($dbconn, "commit");
+
+        return $resultado;
     }
 
 

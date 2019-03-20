@@ -1,12 +1,5 @@
-<!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-    <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin.css" rel="stylesheet">
 
 <?php
 
@@ -42,14 +35,23 @@ if($acao) {
             $sug->setSugestao($_POST["txtSugestao"]);
             
             include 'view/formulario.php';
-            
+
+            echo
+        "
+        <script src=\"node_modules/sweetalert2/dist/sweetalert2.js\">
+        </script>"
+        ;
+
             $sug->save();
+            
 
         break;
 
         case 'excluir':
 
             $id = $_GET['id'];
+
+            $arq = $GET['arq'];
 
             $objEx = new Matheus\Models\Sugestao();
     
