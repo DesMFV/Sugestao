@@ -165,8 +165,8 @@ while ($linha = pg_fetch_array($resultado)) { //aqui troquei para arrays, este l
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=arquivados\">
-                    EXCLUIR
+                    <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=arquivados\">
+                    
                     </a>
 
               </td>

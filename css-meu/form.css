@@ -268,9 +268,10 @@ html, body{
         
         width: 50%;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         flex-direction: column;
+        height: 100%;
     }
     .pag-banner{
         right: 20px;
@@ -282,12 +283,9 @@ html, body{
         background-position: center;
     }
     .box-form{
-      
         display: flex;
-
         width: 88%;
-        margin: 5% 0 5% 0;
-        justify-content: space-around;
+        margin: 0% 0 0% 0;
     }
     .form-sugestao{
         align-items: center;
@@ -301,9 +299,9 @@ html, body{
     .box-home{
         display: flex;
         align-items: center;
-        justify-content: space-between;
         width: 100%;
-        margin: 5% 0 5% 0;
+        height: 2%;
+        margin: 6% 0 0% 0;
     }
     .home-logo{
         width:150px;
@@ -313,18 +311,74 @@ html, body{
         flex-direction: row;
     }
     .form-item{
+        display: flex;
+        margin-top: 100px;
         width: 100%;
         height: 45px;
         margin: 2%;
         font-size: 16px;
     }
     .form-submit{
-    
-        color:#a8a8a8;
-        font-size: 16px;
-        height: 40px;
+        border-radius: 50px;
+        background-color: #b4b4b4;
+        display: flex;
+        justify-content: center;
         width: 100%;
-        background-color: #e1e1e1;
+        height: 50px;
+        border: none;
+        color: #636363;
+    }
+    .form-submit:hover{
+        color: #fff;
+        background-color: #da9124;
+    }
+
+    .env-env{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center; 
+        width: 88%;
+       
+    }
+
+    .e-env-env{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center; 
+        width: 100%;
+        height: 10%;
+    }
+
+    .env-sug{
+        position: relative;
+        left: -5%;
+        border-radius: 50px;
+        background-color: #1d272000;
+        display: flex;
+        justify-content: center;
+        width: 35%;
+        height: 35px;
+        align-items: center;
+    }
+    .a-env{
+        color: #636363;
+        font-size: 20px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #b4b4b4;
+        background-image: none;
+        border: none;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        font-family: "Montserrat";
+        
+    }
+    .a-env:hover{
+        color: #fff;
+        background-color: #da9124;
     }
     .form-textarea{
         height: 150px;
@@ -334,19 +388,78 @@ html, body{
     .form-title{
         font-family: "Montserrat";
         color:#8c3c9a;
-        font-size: 24px;
+        font-size: 30px;
+        margin: 5% 0 55px 0; 
     }
+
+    .question{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 5% 0;
+    }
+
     .form-legend{
         font-family: "Montserrat";
         color:#8c3c9a;
-        font-size: 16px;
+        font-size: 20px;
     }
+
+
+
     .div-of-form{
         color: #e1e1e1;
         height: 1px;
         width: 100%;
-        background-color: #e1e1e1; 
-        margin-top: 7%;
+        background-color: #e1e1e1;
+        margin: 2% 0 2% 0;
     }
+
+    .-s{
+        margin: 3% 0 6% 0;
+    }
+
+    .payment-methods {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .payment-methods:after {
+        content: "";
+        clear: both;
+      }
+      
+      .payment-method {
+        display: flex;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        float: left;
+        height: 70px;
+        position: relative;
+        width: 120px;
+      }
+      
+      .payment-method + .payment-method {
+        margin-left: 25px;
+      }
+
+      .payment-method label {
+        background: #fff no-repeat center center;
+        bottom: 1px;
+        cursor: pointer;
+        display: block;
+        font-size: 0;
+        left: 1px;
+        position: absolute;
+        right: 1px;
+        text-indent: 100%;
+        top: 1px;
+        white-space: nowrap;
+      }
+
+      .payment-methods input:checked + label {
+        outline: 4px solid #21b4d0;
+      }
 
 }

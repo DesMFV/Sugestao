@@ -62,7 +62,7 @@
 
         <div class="home">
 
-            <div class="div-of-form">.</div>
+            <div class="div-of-form -s">.</div>
 
             <div class="box-home">
                 <a class="home-logo-a" href="https://www.urcamp.edu.br/"><img class="home-logo" src="img/logoUR.png"></a>

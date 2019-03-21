@@ -31,7 +31,7 @@
 
                 <div class="form-group-sub">
                    
-                        <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn">
+                        <a class="btn btn-outline-danger">login</a>
                    
                 </div>
 

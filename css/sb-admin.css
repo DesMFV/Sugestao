@@ -49,22 +49,24 @@
 }
 
 .a-acao{
-  width: 3em;
-  height: 3em;
-  background-image: url(../img/excluir.png); 
+  width: 3.2em;
+  height: 3.2em;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.a-acao-e{
+.-r{
 
-  width: 100px;
-  height: 100px;
+  background-image: url(../img/recuperar.jpg);
+}
+
+.-a{
+  background-image: url(../img/arquivar.png); 
+}
+
+.-e{
   background-image: url(../img/excluir.png); 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
 .tab-selected{

@@ -175,14 +175,14 @@ while ($linha = pg_fetch_array($resultado)) {
         <td class=\"td-ex-tb\">
 
        
-        <a class=\"a-acao\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=pesquisa\">
+        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=pesquisa\">
        
         </a>
         
         
         
-        <a class=\"a-acao-a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=pesquisa\">
-        ARQUIVAR
+        <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=pesquisa\">
+        
         </a>
         
         </td>
@@ -210,12 +210,8 @@ while ($linha = pg_fetch_array($resultado)) {
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=deletar&id={$id}&origem=pesquisa\">
-                    DELETAR
-                    </a>
-
-                    <a href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&arq={$arquivado}&origem=pesquisa\">
-                    RESGATAR
+                    <a class=\"a-acao -r\" href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&arq={$arquivado}&origem=pesquisa\">
+                    
                     </a>
 
               </td>
@@ -243,8 +239,8 @@ while ($linha = pg_fetch_array($resultado)) {
 
               <td class=\"td-ex-tb\">
 
-                    <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=pesquisa\">
-                    EXCLUIR
+                    <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=pesquisa\">
+                   
                     </a>
 
               </td>

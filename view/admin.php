@@ -203,12 +203,12 @@
 
                                                   <td class=\"td-ex-tb\">
 
-                                                        <a href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
-                                                        EXCLUIR
+                                                        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
+                                                       
                                                         </a>
 
-                                                        <a href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
-                                                        ARQUIVAR
+                                                        <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
+                                                        
                                                         </a>
 
                                                   </td>
