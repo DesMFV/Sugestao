@@ -40,13 +40,13 @@
         </button>
 
         <!-- Navbar Search -->
-        <form action="pesquisa.php" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            
-                <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
-                
-                    <input type="submit" class="btn btn-primary" value="Procurar">
-                
-           
+        <form action="" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+
+            <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
+
+            <input type="submit" class="btn btn-primary" value="Procurar">
+
+
         </form>
 
         <!-- Navbar -->
@@ -54,7 +54,7 @@
             <li class="nav-item dropdown no-arrow mx-1">
 
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <a class="dropdown-item" href="#">Action</a>
@@ -106,23 +106,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="admin.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span class="tab-selected">Entrada</span></a>
+                    <span class="tab-selected">Sugestões</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="arquivados.php">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Arquivadas</span></a>
+                    <span>Aval Central</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="excluidos.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Lixo</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Sair</span></a>
-            </li>
+
         </ul>
 
         <div id="content-wrapper">
@@ -136,14 +127,74 @@
                             <a href="#">Dashboard</a>
                         </li> 
                     -->
-                    <li class="breadcrumb-item active">Entrada</li>
+                    <li class="breadcrumb-item active">Sugestões/
+                        <?php
+                        if (isset($_GET["filtro"])) {
+                            echo $_GET["filtro"];
+                        } else if (isset($_GET["texto-pesquisa"])) {
+                            echo "pesquisa";
+                        } else {
+                            echo "Entrada";
+                        }
+                        ?></li>
                 </ol>
 
                 <!-- DataTables Example -->
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table"></i>
-                        Data Table Example</div>
+
+                        <?php
+
+                        if(isset($_GET["texto-pesquisa"])) { 
+                            echo "<a href=\"admin.php\">Sair da pesquisa</a>";
+                        } 
+
+                        else {
+
+                            $selecionado = $_GET["filtro"];
+
+                            if ($selecionado == 'Entrada') {
+                                echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
+                            <input type=\"submit\" value=\"Filtrar\">
+                            <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
+                                <option selected=\"selected\" value=\"Entrada\">Entrada</option>
+                                <option value=\"Arquivadas\">Arquivadas</option>
+                                <option value=\"Excluidas\">Excluidas</option>
+                            </select>
+                            </form>";
+                            } else if ($selecionado == 'Arquivadas') {
+                                echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
+                            <input type=\"submit\" value=\"Filtrar\">
+                            <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
+                                <option value=\"Entrada\">Entrada</option>
+                                <option selected=\"selected\" value=\"Arquivadas\">Arquivadas</option>
+                                <option value=\"Excluidas\">Excluidas</option>
+                            </select>
+                            </form>";
+                            } else if ($selecionado == 'Excluidas') {
+                                echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
+                            <input type=\"submit\" value=\"Filtrar\">
+                            <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
+                                <option value=\"Entrada\">Entrada</option>
+                                <option value=\"Arquivadas\">Arquivadas</option>
+                                <option selected=\"selected\" value=\"Excluidas\">Excluidas</option>
+                            </select>
+                            </form>";
+                            } else {
+                                echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
+                            <input type=\"submit\" value=\"Filtrar\">
+                            <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
+                                <option selected=\"selected\" value=\"Entrada\">Entrada</option>
+                                <option value=\"Arquivadas\">Arquivadas</option>
+                                <option value=\"Excluidas\">Excluidas</option>
+                            </select>
+                            </form>";
+                            }
+                        }
+                        ?>
+
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -162,36 +213,203 @@
                                     <?php
 
                                     require '../vendor/autoload.php';
-                                    use Matheus\Models\Sugestao;
 
-                                    $sug = new Matheus\Models\Sugestao();
 
-                                    $resultado = $sug->listAll();
 
-                                    while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
-                                        // Escreve na página o retorno para cada registro trazido pela query
-                                        $boo = $linha->excluido;
-                                        $boo2 = $linha->arquivado;
-                                        if ($boo != "f" || $boo2 != "f") {
-                                            continue;
-                                            echo ' <tr>
-                                              <td>' . "excluido" . '</td>
-                                              <td>' . "excluido" . '</td>
-                                              <td>' . "excluido" . '</td>
-                                              <td>' . "excluido" . '</td>
-                                              <td>' . "excluido" . '</td>
-                                              <td> excluido </td>
-                                            </tr> ';
-                                        } else {
 
-                                            $id = $linha->id;
-                                            $a = $linha->assunto;
-                                            $s = $linha->sugestao;
-                                            $n = $linha->nome_pessoa;
-                                            $e = $linha->email;
-                                            $i = '../' . $linha->imagem;
 
-                                            echo " <tr>
+                                    ##################################################### se PESQUISA #######################################################
+
+
+
+
+                                    if (isset($_GET["texto-pesquisa"])) {
+
+                                        $tp = $_GET['texto-pesquisa'];
+
+                                        require '../vendor/autoload.php';
+
+                                        $sug = new Matheus\Models\Sugestao();
+
+                                        $resultado = $sug->pesquisa($tp);
+
+                                        while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
+                                            // Escreve na página o retorno para cada registro trazido pela query
+
+                                            if ($linha->arquivado == 't' && $linha->excluido == 'f') {
+
+                                                $arquivado = $linha->arquivado;
+
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+
+                                                echo "<tr>
+                                                    <td>{$id}</td>
+                                                    <td>{$a}</td>
+                                                    <td>{$s}</td>
+                                                    <td>{$n}</td>
+                                                    <td>{$e}</td>
+                  
+                                                    <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                    </td>
+    
+                                                    <td class=\"td-ex-tb\">
+    
+                                                        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=admin&texto-pesquisa={$tp}\">
+                       
+                                                        </a>
+    
+                                                    </td>
+                                                    </tr> ";
+
+                                            } else if ($linha->excluido == 't' && $linha->arquivado == 'f') {
+
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+
+                                                echo "<tr>
+                                                    <td>{$id}</td>
+                                                    <td>{$a}</td>
+                                                    <td>{$s}</td>
+                                                    <td>{$n}</td>
+                                                    <td>{$e}</td>
+                  
+                                                    <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                    </td>
+    
+                                                    <td class=\"td-ex-tb\">
+    
+                                                        <a class=\"a-acao -r\" href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&origem=admin&texto-pesquisa={$tp}\">
+                        
+                                                        </a>
+    
+                                                    </td>
+                                                    </tr> ";
+                                            } else if($linha->excluido == 'f' && $linha->arquivado == 'f'){
+
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+
+                                                echo " <tr>
+                                                      <td>{$id}</td>
+                                                      <td>{$a}</td>
+                                                      <td>{$s}</td>
+                                                      <td>{$n}</td>
+                                                      <td>{$e}</td>
+                                                      
+                                                      <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                      </td>
+    
+                                                      <td class=\"td-ex-tb\">
+    
+                                                            <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=admin&texto-pesquisa={$tp}\">
+                                                           
+                                                            </a>
+    
+                                                            <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin&texto-pesquisa={$tp}\">
+                                                            
+                                                            </a>
+    
+                                                      </td>
+                                                      </tr> ";
+                                            }
+                                        }
+                                    }
+
+
+
+
+                                    ############################################################ senão ##############################################################
+
+
+                                    else {
+
+                                            $sug = new Matheus\Models\Sugestao();
+
+                                            $filtro  = isset($_GET["filtro"]) ? $_GET["filtro"] : $_GET["filtro"] = 'Entrada';
+
+                                            $resultado = $sug->listaFiltro($filtro);
+
+                                            while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
+                                                // Escreve na página o retorno para cada registro trazido pela query
+
+                                                if ($filtro == 'Arquivadas') {
+
+                                                    $arquivado = $linha->arquivado;
+
+                                                    $id = $linha->id;
+                                                    $a = $linha->assunto;
+                                                    $s = $linha->sugestao;
+                                                    $n = $linha->nome_pessoa;
+                                                    $e = $linha->email;
+                                                    $i = '../' . $linha->imagem;
+
+                                                    echo "<tr>
+                                                <td>{$id}</td>
+                                                <td>{$a}</td>
+                                                <td>{$s}</td>
+                                                <td>{$n}</td>
+                                                <td>{$e}</td>
+              
+                                                <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                </td>
+
+                                                <td class=\"td-ex-tb\">
+
+                                                    <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=admin&filtro=Arquivadas\">
+                   
+                                                    </a>
+
+                                                </td>
+                                                </tr> ";
+                                                } else if ($filtro == 'Excluidas') {
+
+                                                    $id = $linha->id;
+                                                    $a = $linha->assunto;
+                                                    $s = $linha->sugestao;
+                                                    $n = $linha->nome_pessoa;
+                                                    $e = $linha->email;
+                                                    $i = '../' . $linha->imagem;
+
+                                                    echo "<tr>
+                                                <td>{$id}</td>
+                                                <td>{$a}</td>
+                                                <td>{$s}</td>
+                                                <td>{$n}</td>
+                                                <td>{$e}</td>
+              
+                                                <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                </td>
+
+                                                <td class=\"td-ex-tb\">
+
+                                                    <a class=\"a-acao -r\" href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&origem=admin&filtro=Excluidas\">
+                    
+                                                    </a>
+
+                                                </td>
+                                                </tr> ";
+                                                } else {
+                                                    $id = $linha->id;
+                                                    $a = $linha->assunto;
+                                                    $s = $linha->sugestao;
+                                                    $n = $linha->nome_pessoa;
+                                                    $e = $linha->email;
+                                                    $i = '../' . $linha->imagem;
+
+                                                    echo " <tr>
                                                   <td>{$id}</td>
                                                   <td>{$a}</td>
                                                   <td>{$s}</td>
@@ -203,19 +421,19 @@
 
                                                   <td class=\"td-ex-tb\">
 
-                                                        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$boo}&origem=admin\">
+                                                        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=admin&filtro=Entrada\">
                                                        
                                                         </a>
 
-                                                        <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin\">
+                                                        <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin&filtro=Entrada\">
                                                         
                                                         </a>
 
                                                   </td>
                                                   </tr> ";
+                                                }
+                                            }
                                         }
-                                    }
-
                                     ?>
 
                                 </tbody>
@@ -290,4 +508,4 @@
 
 </body>
 
-</html>
+</html> 

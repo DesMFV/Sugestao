@@ -51,13 +51,22 @@ if($acao) {
 
             $id = $_GET['id'];
 
-            $arq = $GET['arq'];
+            $filtro = $_GET['filtro'];
+
+            $arq = isset($_GET['arq'])?$_GET['arq']:'f';
 
             $objEx = new Matheus\Models\Sugestao();
     
             $objEx->tornarExcluido($id,$arq);
-    
-            header('Location: view/'.$origem.'.php');
+
+            if(isset($_GET['texto-pesquisa'])){
+                $tp = $_GET['texto-pesquisa'];
+                header('Location: view/'.$origem.'.php'.'?texto-pesquisa='.$tp);
+            }
+
+            else{
+                header('Location: view/'.$origem.'.php'.'?filtro='.$filtro);
+            }
 
         break;
 
@@ -65,11 +74,20 @@ if($acao) {
 
             $id = $_GET['id'];
 
+            $filtro = $_GET['filtro'];
+
             $objEx = new Matheus\Models\Sugestao();
 
             $objEx->tornarArquivado($id);
 
-            header('Location: view/'.$origem.'.php');
+            if(isset($_GET['texto-pesquisa'])){
+                $tp = $_GET['texto-pesquisa'];
+                header('Location: view/'.$origem.'.php'.'?texto-pesquisa='.$tp);
+            }
+
+            else{
+                header('Location: view/'.$origem.'.php'.'?filtro='.$filtro);
+            }
 
         break;
 
@@ -77,23 +95,20 @@ if($acao) {
 
             $id = $_GET['id'];
 
+            $filtro = $_GET['filtro'];
+
             $objEx = new Matheus\Models\Sugestao();
 
             $objEx->tornarResgatado($id,$arq);
 
-            header('Location: view/'.$origem.'.php');
+            if(isset($_GET['texto-pesquisa'])){
+                $tp = $_GET['texto-pesquisa'];
+                header('Location: view/'.$origem.'.php'.'?texto-pesquisa='.$tp);
+            }
 
-        break;
-
-        case 'deletar':
-
-            $id = $_GET['id'];
-
-            $objEx = new Matheus\Models\Sugestao();
-
-            $objEx->deletar($id);
-
-            header('Location: view/'.$origem.'.php');
+            else{
+                header('Location: view/'.$origem.'.php'.'?filtro='.$filtro);
+            }
 
         break;
     }

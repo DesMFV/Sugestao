@@ -22,13 +22,16 @@
 
                 <h1 class="form-title">Pesquisa de satisfação</h1>
 
+
+                <!--
+
                 <div class="question">
 
                     <label class="form-legend" for="asdf">Qual o seu nível de satisfação em relação ao atendente?</label>
 
                     <div class="form-item" id="asdf" name="assunto" requrired>
 
-                        <input class="radio" name="radioq1" type="radio" id="r1" value="Muito Insatisfeito"><label class="labelr"for="r1">Muito Insatisfeito</label>
+                        <input class="radio" name="radioq1" type="radio" id="r1" value="Muito Insatisfeito"><label class="labelr" for="r1">Muito Insatisfeito</label>
                         <input name="radioq1" type="radio" id="r2" value="Parcialmente Insatisfeito"><label for="r2">Parcialmente Insatisfeito</label>
                         <input name="radioq1" type="radio" id="r3" value="n-1-outro"><label for="r3">Nem Insatisfeito, Nem Satisfeito</label>
                         <input name="radioq1" type="radio" id="r4" value="Parcialmente Satisfeito"><label for="r4">Parcialmente Satisfeito</label>
@@ -86,28 +89,41 @@
 
                     </div>
 
-                </div>
+                </div>  -->
 
-                <!--
 
-                <ul class="payment-methods">
-                    <li class="payment-method paypal">
-                        <input name="payment_methods" type="radio" id="paypal">
-                        <label for="paypal">PayPal</label><span>fdkglndfsgl</span>
-                    </li>
+                    <ul class="payment-methods">
+                        <li class="payment-method paypal">
+                            <input name="payment_methods" type="radio" id="paypal">
+                            <label for="paypal">PayPal</label><span>fdkglndfsgl</span>
+                        </li>
 
-                    <li class="payment-method pagseguro">
-                        <input name="payment_methods" type="radio" id="pagseguro">fgdf
-                        <label for="pagseguro">PagSeguro</label>
-                    </li>
+                        <li class="payment-method pagseguro">
+                            <input name="payment_methods" type="radio" id="pagseguro">fgdf
+                            <label for="pagseguro">PagSeguro</label>
+                        </li>
 
-                    <li class="payment-method bankslip">
-                        <input name="payment_methods" type="radio" id="bankslip">
-                        <label for="bankslip">Boleto</label>
-                    </li>
-                </ul>
+                        <li class="payment-method bankslip">
+                            <input class="radio-teste" name="payment_methods" type="radio" id="bankslip">Muito Insatisfeito
+                            <label for="bankslip"></label>
+                        </li>
 
-                -->
+                        <li class="payment-method bankslip">
+                            <input class="radio-teste" name="payment_methods" type="radio" id="2"><span >Muito Insatisfeito</span>
+                            <label for="2"></label>
+                        </li>
+
+                        <li class="payment-method bankslip">
+                            <input class="radio-teste" name="payment_methods" type="radio" id="3"> 
+                            <span >Muito Insatisfeito</span>
+                            <label for="3"></label>
+                        </li>
+                        
+                    </ul>
+
+              
+
+
 
 
 

@@ -137,7 +137,7 @@ class Sugestao
 
         pg_query($dbconn, "begin");
 
-        if($arq='t'){
+        if($arq == 't'){
 
             $sql1 = "UPDATE sugestao SET excluido = TRUE, arquivado = FALSE WHERE id = '$id';";
 
@@ -186,33 +186,19 @@ class Sugestao
         $this->msg = $res1;
     }
 
-    public function tornarResgatado($id,$arq)
+    public function tornarResgatado($id)
     {
         $conexao = new Conexao();
 
         $dbconn = $conexao->conectar();
 
         pg_query($dbconn, "begin");
-
-
-        if($arq='t'){
-
+        
             $sql1 = "UPDATE sugestao SET excluido = FALSE, arquivado = FALSE WHERE id = '$id';";
 
             $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
             pg_query($dbconn, "commit");
-
-        }
-        else{
-
-            $sql1 = "UPDATE sugestao SET excluido = FALSE WHERE id = '$id';";
-
-            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-            pg_query($dbconn, "commit");
-            
-        }
 
         $this->msg = $res1;
 
@@ -250,19 +236,15 @@ class Sugestao
 
         $dbconn = $conexao->conectar();
 
-
         $sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
         OR sugestao ilike '%$tp%' 
         OR email ilike '%$tp%' 
         OR nome_pessoa ilike '%$tp%' 
         OR assunto ilike '%$tp%';";
 
-
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
-
-        
 
         return $res1;
     }
@@ -281,6 +263,43 @@ class Sugestao
         pg_query($dbconn, "commit");
 
         return $resultado;
+    }
+
+    public function listaFiltro($filtro)
+    {
+        $conexao = new Conexao();
+
+        $dbconn = $conexao->conectar();
+
+        pg_query($dbconn, "begin");
+
+        if($filtro=='Entrada'){
+
+            $query = "SELECT * FROM sugestao WHERE excluido = 'f' AND arquivado = 'f'";
+            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
+
+            pg_query($dbconn, "commit");
+
+            return $resultado;
+        }
+
+        else if($filtro=='Arquivadas'){
+            $query = "SELECT * FROM sugestao WHERE arquivado = 't' ";
+            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
+
+            pg_query($dbconn, "commit");
+
+            return $resultado;
+        }
+
+        else{
+            $query = "SELECT * FROM sugestao WHERE excluido = 't' ";
+            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
+
+            pg_query($dbconn, "commit");
+
+            return $resultado;
+        }
     }
 
 

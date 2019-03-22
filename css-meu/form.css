@@ -327,10 +327,12 @@ html, body{
         height: 50px;
         border: none;
         color: #636363;
+        margin-top: 50px;
     }
     .form-submit:hover{
         color: #fff;
         background-color: #da9124;
+        
     }
 
     .env-env{
@@ -420,7 +422,10 @@ html, body{
     }
 
     .payment-methods {
+        display: flex;
         list-style: none;
+        width: 88%;
+        justify-content: space-around;
         margin: 0;
         padding: 0;
       }
@@ -432,34 +437,53 @@ html, body{
       
       .payment-method {
         display: flex;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
+        background-color: rgb(184, 179, 179);
         float: left;
-        height: 70px;
-        position: relative;
-        width: 120px;
+        height: 45px;
+        width: 105px;
+        border-radius: 50px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
       }
+
+      .payment-method:hover{
+        background-color: #ff9900;
+      }
+
+      .span-of-option{
+          position: relative;
+          left: -3px;
+      }
+
+
+
       
       .payment-method + .payment-method {
         margin-left: 25px;
       }
 
       .payment-method label {
-        background: #fff no-repeat center center;
-        bottom: 1px;
+        background: rgba(255, 255, 255, 0) no-repeat center center;
         cursor: pointer;
         display: block;
         font-size: 0;
-        left: 1px;
         position: absolute;
-        right: 1px;
         text-indent: 100%;
-        top: 1px;
         white-space: nowrap;
+        width: 99px;
+        height: 39px;
+        border-radius: 50px;
       }
 
-      .payment-methods input:checked + label {
-        outline: 4px solid #21b4d0;
+      .payment-method input:checked + label {
+        border: 4px solid #ff9900;
+        
+      }
+
+      .radio-teste{
+          width: 0;
+          height: 0;
       }
 
 }

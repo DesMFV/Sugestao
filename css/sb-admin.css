@@ -5036,6 +5036,9 @@ input[type="button"].btn-block {
 .card-link + .card-link {
   margin-left: 1.25rem;
 }
+.select-filter{
+  height: 30px;
+}
 
 .card-header {
   padding: 0.75rem 1.25rem;
