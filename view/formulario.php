@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
 <link rel="stylesheet" href="css-meu/form.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -22,7 +21,9 @@
 
                 <h1 class="form-title">Deixe sua sugestão</h1>
 
-                <input class="form-item" type="text" name="txtNome" placeholder="Nome Completo" required>
+              
+                    <input class="form-item" type="text" name="txtNome" placeholder="Nome Completo" required>
+            
 
                 <input class="form-item" type="email" name="email" placeholder="E-mail" required>
 
