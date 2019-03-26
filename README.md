@@ -8,6 +8,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
 * CSS.
 * Postgresql (base de dados).
 * pgAdmin III.
+* PHP 7
 
 
 ## Começando
@@ -22,8 +23,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
     * 2. port: 5432 (padrão)
     * 3. Maintenence BD: postgres
     * 4. User Name: postgres 
-    * 5. Password=postgres 
-    * 6. PHP 7
+    * 5. Password=postgres
 
 * Crie uma base de dados nomeada ``` sug-base ``` .
 
