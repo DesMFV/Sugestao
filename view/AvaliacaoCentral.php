@@ -28,13 +28,18 @@
 
 
                 <!-- ============= inicio SUGESTÃO =============-->
-                <form class="form-sugestao" method="POST" action="?pagina=SugestaoController&acao=enviar" enctype="multipart/form-data">
+                <form class="form-sugestao" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa" enctype="multipart/form-data">
 
 
                     <h1 class="form-title">Pesquisa de satisfação</h1>
 
 
                     <?php
+
+                    require '../vendor/autoload.php';
+
+                    $resposta = new Matheus\Models\Respostas();
+
 
                     $questao = array(
                         "pergunta1" => "Qual o seu nível de satisfação em relação ao atendente?",
@@ -56,27 +61,27 @@
                 <ul class=\"question-radios\">
 
                     <li class=\"payment-method muito-satisfeito\">
-                        <input class=\"radio-teste\" name=\"radio_respostaq" . ++$q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Insatisfeito 
+                        <input class=\"radio-teste\" value=\"1\" name=\"radio_respostaq" . ++$q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Insatisfeito 
                         <label for=\"" . $r . "-" . $q . "\"></label>
                     </li>
 
                     <li class=\"payment-method pagseguro\">
-                        <input class=\"radio-teste\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Insatisfeito 
+                        <input class=\"radio-teste\" value=\"2\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Insatisfeito 
                         <label for=\"" . $r . "-" . $q . "\"></label>
                     </li>
 
                     <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Nem Insatisfeito, Nem Satisfeito 
+                        <input class=\"radio-teste\" value=\"3\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Nem Insatisfeito, Nem Satisfeito 
                         <label for=\"" . $r . "-" . $q . "\"></label>
                     </li>
 
                     <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Satisfeito 
+                        <input class=\"radio-teste\" value=\"4\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Satisfeito 
                         <label class=\"label-p\" for=\"" . $r . "-" . $q . "\"></label>
                     </li>
 
                     <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Satisfeito 
+                        <input class=\"radio-teste\" value=\"5\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Satisfeito 
                         <label for=\"" . $r . "-" . $q . "\"></label>
                     </li>
 
@@ -86,67 +91,8 @@
 
                         $r = 0;
                     }
-
-
                     ?>
 
-
-                    <!--
-
-            <div class="question">
-
-                <label class="form-legend" for="asdf">Qual o seu nível de satisfação em relação ao atendente?</label>
-
-                <div class="form-item" id="asdf" name="assunto" requrired>
-
-                    <input class="radio" name="radioq1" type="radio" id="r1" value="Muito Insatisfeito"><label class="labelr" for="r1">Muito Insatisfeito</label>
-                    <input name="radioq1" type="radio" id="r2" value="Parcialmente Insatisfeito"><label for="r2">Parcialmente Insatisfeito</label>
-                    <input name="radioq1" type="radio" id="r3" value="n-1-outro"><label for="r3">Nem Insatisfeito, Nem Satisfeito</label>
-                    <input name="radioq1" type="radio" id="r4" value="Parcialmente Satisfeito"><label for="r4">Parcialmente Satisfeito</label>
-                    <input name="radioq1" type="radio" id="r5" value="Muito Satisfeito"><label for="r5">Muito Satisfeito</label>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="question">
-
-                <label class="form-legend" for="asdf">Qual o seu nível de satisfação em relação ao atendente?</label>
-
-                <ul class="question-radios">
-
-                    <li class="payment-method muito-satisfeito">
-                        <input class="radio-teste" name="radio_respostaq1" type="radio" id="r1-q1">Muito Insatisfeito
-                        <label for="r1-q1"></label>
-                    </li>
-
-                    <li class="payment-method pagseguro">
-                        <input class="radio-teste" name="radio_respostaq1" type="radio" id="r2-q1">Parcialmente Insatisfeito
-                        <label for="r2-q1"></label>
-                    </li>
-
-                    <li class="payment-method bankslip">
-                        <input class="radio-teste" name="radio_respostaq1" type="radio" id="r3-q1">Nem Insatisfeito, Nem Satisfeito
-                        <label for="r3-q1"></label>
-                    </li>
-
-                    <li class="payment-method bankslip">
-                        <input class="radio-teste" name="radio_respostaq1" type="radio" id="r4-q1">Parcialmente Satisfeito
-                        <label class="label-p" for="r4-q1"></label>
-                    </li>
-
-                    <li class="payment-method bankslip">
-                        <input class="radio-teste" name="radio_respostaq1" type="radio" id="r5-q1">Muito Satisfeito
-                        <label for="r5-q1"></label>
-                    </li>
-
-                </ul>
-
-              </div>
-
--->
                     <input class="form-submit" type="submit" value="Enviar Pesquisa">
 
                 </form>
@@ -160,7 +106,7 @@
 
 
             <div class="env-env">
-                <div class="div-of-form"></div>
+                <div class="div-of-form -p"></div>
                 <div class="e-env-env">
                     <label class="link-legend">Deixe uma Sugestão ou crítica: </label>
                     <div class="env-sug">

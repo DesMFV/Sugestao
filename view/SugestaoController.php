@@ -3,6 +3,8 @@
 
 <?php
 
+
+
 $acao = isset($_GET['acao']) ? $_GET['acao'] : null;
 
 $origem = $_GET['origem'];
@@ -13,21 +15,29 @@ $destino = $_GET['destino'];
 if($acao) {
     switch($acao){
 
+        case 'enviarpesquisa':
+
+            $rq1 = $_POST["radio_respostaq1"];
+            $rq2 = $_POST["radio_respostaq2"];
+            $rq3 = $_POST["radio_respostaq3"];
+            $rq4 = $_POST["radio_respostaq4"];
+
+            $valores = array(
+                $rq1,$rq2,$rq3,$rq4
+            );
+
+
         case 'enviar':
 
             $sug = new Matheus\Models\Sugestao();
 
+            
             if (isset($_FILES['arquivo'])) {
                 $upArquivo = new Matheus\Upload\UploadImagem();
                 $arq = $_FILES['arquivo'];
                 $arquivo = $upArquivo->fazUpload($arq);
                 $sug->setFoto($arquivo);
             } 
-        
-            else {
-                echo "Falha no envio<br/>";
-                die;
-            }
         
             $sug->setNome($_POST["txtNome"]);
             $sug->setEmail($_POST["email"]);

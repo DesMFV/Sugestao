@@ -246,16 +246,28 @@
                                                 $n = $linha->nome_pessoa;
                                                 $e = $linha->email;
                                                 $i = '../' . $linha->imagem;
+                                                $img = $linha->imagem;
 
-                                                echo "<tr>
-                                                    <td>{$id}</td>
-                                                    <td>{$a}</td>
-                                                    <td>{$s}</td>
-                                                    <td>{$n}</td>
-                                                    <td>{$e}</td>
-                  
-                                                    <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                    </td>
+                                                //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+                                                
+
+
+                                                if($linha->imagem != "Nenhum anexo adicionado"){
+                                                    $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                    </td>";
+                                                }
+                                                else{
+                                                    $ie = "<td>{$img}</td>";
+                                                }
+
+                                            echo "<tr>
+                                            <td>{$id}</td>
+                                            <td>{$a}</td>
+                                            <td>{$s}</td>
+                                            <td>{$n}</td>
+                                            <td>{$e}</td>
+                                            ".$ie."
     
                                                     <td class=\"td-ex-tb\">
     
@@ -355,16 +367,28 @@
                                                     $n = $linha->nome_pessoa;
                                                     $e = $linha->email;
                                                     $i = '../' . $linha->imagem;
+                                                    $img = $linha->imagem;
 
-                                                    echo "<tr>
+                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+                                                    
+
+
+                                                    if($linha->imagem != "Nenhum anexo adicionado"){
+                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                        </td>";
+                                                    }
+                                                    else{
+                                                        $ie = "<td>{$img}</td>";
+                                                    }
+
+                                                echo "<tr>
                                                 <td>{$id}</td>
                                                 <td>{$a}</td>
                                                 <td>{$s}</td>
                                                 <td>{$n}</td>
                                                 <td>{$e}</td>
-              
-                                                <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                </td>
+                                                ".$ie."
 
                                                 <td class=\"td-ex-tb\">
 
@@ -382,16 +406,28 @@
                                                     $n = $linha->nome_pessoa;
                                                     $e = $linha->email;
                                                     $i = '../' . $linha->imagem;
+                                                    $img = $linha->imagem;
 
-                                                    echo "<tr>
+                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+                                                    
+
+
+                                                    if($linha->imagem != "Nenhum anexo adicionado"){
+                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                        </td>";
+                                                    }
+                                                    else{
+                                                        $ie = "<td>{$img}</td>";
+                                                    }
+
+                                                echo "<tr>
                                                 <td>{$id}</td>
                                                 <td>{$a}</td>
                                                 <td>{$s}</td>
                                                 <td>{$n}</td>
                                                 <td>{$e}</td>
-              
-                                                <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                </td>
+                                                ".$ie."
 
                                                 <td class=\"td-ex-tb\">
 
@@ -408,16 +444,28 @@
                                                     $n = $linha->nome_pessoa;
                                                     $e = $linha->email;
                                                     $i = '../' . $linha->imagem;
+                                                    $img = $linha->imagem;
 
-                                                    echo " <tr>
-                                                  <td>{$id}</td>
-                                                  <td>{$a}</td>
-                                                  <td>{$s}</td>
-                                                  <td>{$n}</td>
-                                                  <td>{$e}</td>
-                                                  
-                                                  <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                  </td>
+                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+                                                    
+
+
+                                                    if($linha->imagem != "Nenhum anexo adicionado"){
+                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                        </td>";
+                                                    }
+                                                    else{
+                                                        $ie = "<td>{$img}</td>";
+                                                    }
+
+                                                echo "<tr>
+                                                <td>{$id}</td>
+                                                <td>{$a}</td>
+                                                <td>{$s}</td>
+                                                <td>{$n}</td>
+                                                <td>{$e}</td>
+                                                ".$ie."
 
                                                   <td class=\"td-ex-tb\">
 

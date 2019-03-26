@@ -1,10 +1,11 @@
 <?php
 
+
 namespace Matheus\Models;
 
 use Matheus\Conexao\Conexao;
 
-class Sugestao 
+class Respostas
 {
     //$e = $_POST[email];
     //$a = $_POST[assunto];
@@ -12,15 +13,8 @@ class Sugestao
     //$n = $_POST[txtNome];
 
     private $id;
-    private $email;
-    private $assunto;
-    private $arquivado;
-    private $excluido;
-    private $sugestao;
-    private $nome_ps;
-    private $foto;
-    private $msg;
-
+    private $texto;
+    private $valor;
 
 
 #=============================================== getters e setters ============================================#
@@ -34,60 +28,31 @@ class Sugestao
         $this->id  = $id_in;
     }
 
-    //============= getter setter Email ==============
+    //============= getter setter Texto ==============
 
-    public function getEmail()
+    public function getTexto()
     {
-        return $this->email;
+        return $this->texto;
     }
-    public function setEmail($email_in)
+    public function setTexto($texto_in)
     {
-        $this->email  = $email_in;
-    }
-
-    //============= getter setter Assunto ==============
-
-    public function getAssunto()
-    {
-        return $this->assunto;
-    }
-    public function setAssunto($assunto_in)
-    {
-        $this->assunto  = $assunto_in;
+        $this->texto  = $texto_in;
     }
 
-    //============= getter setter Sugestao ==============
+    //============= getter setter Valor ==============
 
-    public function getSugestao()
+    public function getValor()
     {
-        return $this->sugestao;
+        return $this->valor;
     }
-    public function setSugestao($sugestao_in)
+    public function setValor($valor_in)
     {
-        $this->sugestao  = $sugestao_in;
-    }
-
-    //============= getter setter Nome ==============
-
-    public function getNome()
-    {
-        return $this->nome_ps;
-    }
-    public function setNome($nome_in)
-    {
-        $this->nome_ps  = $nome_in;
+        $this->valor  = $valor_in;
     }
 
-    //============= getter setter Foto ==============
 
-    public function getFoto()
-    {
-        return $this->foto;
-    }
-    public function setFoto($foto_in)
-    {
-        $this->foto  = $foto_in;
-    }
+    
+
 
 #=============================================== Funções de banco ============================================#
 
@@ -99,16 +64,14 @@ class Sugestao
 
         pg_query($dbconn, "begin");
         
-        $s = $this->sugestao;
-        $e = $this->email;
-        $n = $this->nome_ps;
-        $a = $this->assunto;
-        $ex = 0;
-        $arq = 0;
 
-        $img = $this->foto;
         
-        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto,excluido,arquivado)values('$img','$s','$e','$n','$a','$ex', '$arq')";
+        
+        $t = $this->texto;
+        $v = $this->valor;
+    
+        
+        $sql1 = "insert into respostas (texto,valor)values('$img','$s','$e','$n','$a','$ex', '$arq')";
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
@@ -303,5 +266,4 @@ class Sugestao
 
 
 }
-
  

@@ -16,6 +16,8 @@ class UploadImagem
    public function fazUpload($arquivo)
   {
 
+    
+
     // Pasta onde o arquivo vai ser salvo
     $_UP['pasta'] = 'uploads/';
     // Tamanho máximo do arquivo (em Bytes)
@@ -32,8 +34,10 @@ class UploadImagem
     $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
 
 
-    // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
-    if ($arquivo['error'] != 0) {
+    if($arquivo["size"]!=0){
+
+      // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
+      if ($arquivo['error'] != 0) {
       die("Não foi possível fazer o upload, erro:" . $_UP['erros'][$arquivo['error']]);
       exit; // Para a execução do script
     }
@@ -79,6 +83,14 @@ class UploadImagem
       
       echo "Não foi possível enviar o arquivo, tente novamente";
     }
+
+    }
+
+    else{
+      return "Nenhum anexo adicionado";
+    }
+
+    
   }
 
 }

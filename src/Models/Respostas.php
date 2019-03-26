@@ -4,7 +4,7 @@ namespace Matheus\Models;
 
 use Matheus\Conexao\Conexao;
 
-class Sugestao 
+class Opcoes 
 {
     //$e = $_POST[email];
     //$a = $_POST[assunto];
@@ -12,14 +12,7 @@ class Sugestao
     //$n = $_POST[txtNome];
 
     private $id;
-    private $email;
-    private $assunto;
-    private $arquivado;
-    private $excluido;
-    private $sugestao;
-    private $nome_ps;
-    private $foto;
-    private $msg;
+    private $descricao;
 
 
 
@@ -36,62 +29,19 @@ class Sugestao
 
     //============= getter setter Email ==============
 
-    public function getEmail()
+    public function getDescricao()
     {
-        return $this->email;
+        return $this->descricao;
     }
-    public function setEmail($email_in)
+    public function setDescricao($descricao_in)
     {
-        $this->email  = $email_in;
-    }
-
-    //============= getter setter Assunto ==============
-
-    public function getAssunto()
-    {
-        return $this->assunto;
-    }
-    public function setAssunto($assunto_in)
-    {
-        $this->assunto  = $assunto_in;
+        $this->descricao  = $descricao_in;
     }
 
-    //============= getter setter Sugestao ==============
-
-    public function getSugestao()
-    {
-        return $this->sugestao;
-    }
-    public function setSugestao($sugestao_in)
-    {
-        $this->sugestao  = $sugestao_in;
-    }
-
-    //============= getter setter Nome ==============
-
-    public function getNome()
-    {
-        return $this->nome_ps;
-    }
-    public function setNome($nome_in)
-    {
-        $this->nome_ps  = $nome_in;
-    }
-
-    //============= getter setter Foto ==============
-
-    public function getFoto()
-    {
-        return $this->foto;
-    }
-    public function setFoto($foto_in)
-    {
-        $this->foto  = $foto_in;
-    }
 
 #=============================================== Funções de banco ============================================#
 
-    public function save()
+    public function selectResposta($valor)
     {
         $conexao = new Conexao();
 
@@ -99,34 +49,17 @@ class Sugestao
 
         pg_query($dbconn, "begin");
         
-        $s = $this->sugestao;
-        $e = $this->email;
-        $n = $this->nome_ps;
-        $a = $this->assunto;
-        $ex = 0;
-        $arq = 0;
-
-        $img = $this->foto;
-        
-        $sql1 = "insert into sugestao (imagem,sugestao,email,nome_pessoa,assunto,excluido,arquivado)values('$img','$s','$e','$n','$a','$ex', '$arq')";
+        $sql1 = "SELECT resposta_descricao FROM respostas WHERE id = '$valor'";
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
         pg_query($dbconn, "commit");
 
         $this->msg = $res1;
         
-        echo
-        "<script>
-        Swal.fire(
-            'Sugestão enviada com sucesso!',
-            '',
-            'sucess'
-        )
-        </script>"
-        ;
+        return $sql1;
 
     }
-
+/*
     public function tornarExcluido($id,$arq)
     {
         $conexao = new Conexao();
@@ -299,7 +232,7 @@ class Sugestao
             return $resultado;
         }
     }
-
+*/
 
 
 }
