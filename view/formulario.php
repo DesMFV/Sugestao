@@ -90,9 +90,8 @@
 
                         <div class="env-env">
                             <div class="e-env-env">
-                                <label class="link-legend">Avalie nossa Central do Aluno: </label>
                                 <div class="env-sug">
-                                    <a href="view/AvaliacaoCentral.php" class="a-env" value="Adicionar">Avaliar</a>
+                                    <a href="view/AvaliacaoCentral.php" class="a-env" value="Adicionar">Avalie nossa Central do Aluno</a>
                                 </div>
                             </div>
                         </div>

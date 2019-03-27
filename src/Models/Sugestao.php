@@ -95,7 +95,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
         
@@ -131,7 +133,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
 
@@ -171,7 +175,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
 
@@ -188,7 +194,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
         
@@ -215,7 +223,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
 
@@ -232,7 +242,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         $sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
         OR sugestao ilike '%$tp%' 
@@ -251,7 +263,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);;
 
         pg_query($dbconn, "begin");
 
@@ -267,7 +281,9 @@ class Sugestao
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "sug-base";
+
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
 

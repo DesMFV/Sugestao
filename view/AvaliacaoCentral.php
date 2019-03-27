@@ -28,7 +28,7 @@
 
 
                 <!-- ============= inicio SUGESTÃO =============-->
-                <form class="form-sugestao" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa" enctype="multipart/form-data">
+                <form class="form-sugestao" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa&destino=obrigado" enctype="multipart/form-data">
 
 
                     <h1 class="form-title">Pesquisa de satisfação</h1>
@@ -36,61 +36,67 @@
 
                     <?php
 
+
                     require '../vendor/autoload.php';
 
-                    $resposta = new Matheus\Models\Respostas();
+                    $o = new Matheus\Models\Opcoes();
 
+                    $opcoes = array(
+                       1 => $o->getOpcao(1),$o->getOpcao(2),$o->getOpcao(3), $o->getOpcao(4), $o->getOpcao(5)
+                    )
+                    ;
 
-                    $questao = array(
-                        "pergunta1" => "Qual o seu nível de satisfação em relação ao atendente?",
-                        "pergunta2" => "Qual o seu nível de satisfação quanto a resolução da dúvida/problema apresentado?",
-                        "pergunta3" => "Qual o seu nível de satisfação quanto ao tempo de espera para atendimento na Central do Aluno?",
-                        "pergunta4" => "Qual o seu nível de satisfação quanto ao espaço físico da Central do Aluno?",
-                    );
+                    $p = new Matheus\Models\Perguntas();
 
-                    $q = 0;
-                    $r = 0;
+                    $perguntas = array(
+                       1 => $p->getPergunta(1),$p->getPergunta(2),$p->getPergunta(3), $p->getPergunta(4)
+                    )
+                    ;
 
-                    foreach ($questao as $key => $value) {
+                    $pergunta = 0;
+                    $opcao = 0;
+
+                        foreach ($perguntas as $key => $value) {
+
+                            ++$pergunta;
 
                         echo "
                 <div class=\"question\">
 
-                <label class=\"form-pergunta\" for=\"asdf\">$value</label>
+                <label class=\"form-pergunta\" for=\"asdf\" name=\"pergunta\"> $value </label>
 
                 <ul class=\"question-radios\">
 
-                    <li class=\"payment-method muito-satisfeito\">
-                        <input class=\"radio-teste\" value=\"1\" name=\"radio_respostaq" . ++$q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Insatisfeito 
-                        <label for=\"" . $r . "-" . $q . "\"></label>
+                    <li class=\"payment-method\">
+                        <input class=\"radio-teste\" value=\"1\" name=\"radio_respostaq" .$pergunta . "\" type=\"radio\" id=\"" . ++$opcao . "-" . $pergunta . "\">".$opcoes[$opcao] ."
+                        <label for=\"" . $opcao . "-" . $pergunta . "\"></label>
+                    </li>
+                    <li class=\"payment-method\">
+                        <input class=\"radio-teste\" value=\"2\" name=\"radio_respostaq" . $pergunta . "\" type=\"radio\" id=\"" . ++$opcao . "-" . $pergunta . "\">".$opcoes[$opcao]."
+                        <label for=\"" . $opcao . "-" . $pergunta . "\"></label>
                     </li>
 
-                    <li class=\"payment-method pagseguro\">
-                        <input class=\"radio-teste\" value=\"2\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Insatisfeito 
-                        <label for=\"" . $r . "-" . $q . "\"></label>
+                    <li class=\"payment-method\">
+                        <input class=\"radio-teste\" value=\"3\" name=\"radio_respostaq" . $pergunta . "\" type=\"radio\" id=\"" . ++$opcao . "-" . $pergunta . "\">".$opcoes[$opcao]."
+                        <label for=\"" . $opcao . "-" . $pergunta . "\"></label>
                     </li>
 
-                    <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" value=\"3\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Nem Insatisfeito, Nem Satisfeito 
-                        <label for=\"" . $r . "-" . $q . "\"></label>
+                    <li class=\"payment-method\">
+                        <input class=\"radio-teste\" value=\"4\" name=\"radio_respostaq" . $pergunta . "\" type=\"radio\" id=\"" . ++$opcao . "-" . $pergunta . "\">".$opcoes[$opcao]."
+                        <label class=\"label-p\" for=\"" . $opcao . "-" . $pergunta . "\"></label>
                     </li>
 
-                    <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" value=\"4\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Parcialmente Satisfeito 
-                        <label class=\"label-p\" for=\"" . $r . "-" . $q . "\"></label>
-                    </li>
-
-                    <li class=\"payment-method bankslip\">
-                        <input class=\"radio-teste\" value=\"5\" name=\"radio_respostaq" . $q . "\" type=\"radio\" id=\"" . ++$r . "-" . $q . "\">Muito Satisfeito 
-                        <label for=\"" . $r . "-" . $q . "\"></label>
+                    <li class=\"payment-method\">
+                        <input class=\"radio-teste\" value=\"5\" name=\"radio_respostaq" . $pergunta . "\" type=\"radio\" id=\"" . ++$opcao . "-" . $pergunta . "\">".$opcoes[$opcao]."
+                        <label for=\"" . $opcao . "-" . $pergunta . "\"></label>
                     </li>
 
                 </ul>
 
                 </div>";
-
-                        $r = 0;
+                        $opcao = 0;
                     }
+                    
                     ?>
 
                     <input class="form-submit" type="submit" value="Enviar Pesquisa">
@@ -107,12 +113,9 @@
 
             <div class="env-env">
                 <div class="div-of-form -p"></div>
-                <div class="e-env-env">
-                    <label class="link-legend">Deixe uma Sugestão ou crítica: </label>
                     <div class="env-sug">
-                        <a href="../index.php" class="a-env" value="Adicionar">Adicionar</a>
+                        <a href="../index.php" class="a-env" value="Adicionar">Deixe uma Sugestão ou crítica</a>
                     </div>
-                </div>
             </div>
 
 

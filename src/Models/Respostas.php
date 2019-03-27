@@ -4,16 +4,12 @@ namespace Matheus\Models;
 
 use Matheus\Conexao\Conexao;
 
-class Opcoes 
+class Respostas 
 {
-    //$e = $_POST[email];
-    //$a = $_POST[assunto];
-    //$s = $_POST[txtSugestao];
-    //$n = $_POST[txtNome];
-
     private $id;
-    private $descricao;
-
+    private $data;
+    private $pergunta;
+    private $opcao;
 
 
 #=============================================== getters e setters ============================================#
@@ -29,211 +25,68 @@ class Opcoes
 
     //============= getter setter Email ==============
 
-    public function getDescricao()
+    public function getData()
     {
-        return $this->descricao;
+        return $this->data;
     }
-    public function setDescricao($descricao_in)
+    public function setData($data_in)
     {
-        $this->descricao  = $descricao_in;
+        $this->data  = $data_in;
+    }
+
+    //============= getter setter pergunta ==============
+
+    public function getPergunta()
+    {
+        return $this->pergunta;
+    }
+    public function setPergunta($pergunta_in)
+    {
+        $this->pergunta  = $pergunta_in;
+    }
+
+    //============= getter setter opcao ==============
+
+    public function getOpcao()
+    {
+        return $this->opcao;
+    }
+    public function setOpcao($opcao_in)
+    {
+        $this->opcao  = $opcao_in;
     }
 
 
 #=============================================== Funções de banco ============================================#
 
-    public function selectResposta($valor)
+    public function save($rq1,$rq2,$rq3,$rq4)
     {
         $conexao = new Conexao();
 
-        $dbconn = $conexao->conectar();
+        $base = "pesquisa";
 
-        pg_query($dbconn, "begin");
-        
-        $sql1 = "SELECT resposta_descricao FROM respostas WHERE id = '$valor'";
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-        pg_query($dbconn, "commit");
+        $opcoes = array(
+            1=>$rq1,$rq2,$rq3,$rq4
+        );
 
-        $this->msg = $res1;
-        
-        return $sql1;
-
-    }
-/*
-    public function tornarExcluido($id,$arq)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
+        $dbconn = $conexao->conectar($base);
 
         pg_query($dbconn, "begin");
 
-        if($arq == 't'){
+        for($i=1;$i<5;$i++){
 
-            $sql1 = "UPDATE sugestao SET excluido = TRUE, arquivado = FALSE WHERE id = '$id';";
+            $data = date('Y-m-d H:i:s');
+
+            $sql1 = "INSERT INTO respostas (data,pergunta,opcao) VALUES ("."'".$data."'".",{$i},".$opcoes[$i].")";
 
             $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-            pg_query($dbconn, "commit");
-
         }
-        else{
-
-            $sql1 = "UPDATE sugestao SET excluido = TRUE WHERE id = '$id';";
-
-            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         
             pg_query($dbconn, "commit");
 
-        }
+            $this->msg = $res1;
 
-        $this->msg = $res1;
-
-        echo
-        "<script>
-        Swal.fire(
-            'Registro de tal tal excluido com sucesso!',
-            '',
-            'sucess'
-        )
-        </script>"
-        ; 
     }
-
-    public function tornarArquivado($id)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        pg_query($dbconn, "begin");
-
-        $sql1 = "UPDATE sugestao SET arquivado = TRUE WHERE id = '$id';";
-
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-        pg_query($dbconn, "commit");
-
-        $this->msg = $res1;
-    }
-
-    public function tornarResgatado($id)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        pg_query($dbconn, "begin");
-        
-            $sql1 = "UPDATE sugestao SET excluido = FALSE, arquivado = FALSE WHERE id = '$id';";
-
-            $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-            pg_query($dbconn, "commit");
-
-        $this->msg = $res1;
-
-        echo
-        "<script>
-        Swal.fire(
-            'Registro de tal tal excluido com sucesso!',
-            '',
-            'sucess'
-        )
-        </script>"
-        ; 
-    }
-
-    public function deletar($id)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        pg_query($dbconn, "begin");
-
-        $sql1 = "DELETE FROM sugestao WHERE id = '$id';";
-
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-        pg_query($dbconn, "commit");
-
-        $this->msg = $res1;
-    }
-
-    public function pesquisa($tp)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        $sql1 = "SELECT * FROM sugestao WHERE id::varchar = '$tp'
-        OR sugestao ilike '%$tp%' 
-        OR email ilike '%$tp%' 
-        OR nome_pessoa ilike '%$tp%' 
-        OR assunto ilike '%$tp%';";
-
-        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
-        
-        pg_query($dbconn, "commit");
-
-        return $res1;
-    }
-
-    public function listAll()
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        pg_query($dbconn, "begin");
-
-        $query = "select * from sugestao";
-        $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
-
-        pg_query($dbconn, "commit");
-
-        return $resultado;
-    }
-
-    public function listaFiltro($filtro)
-    {
-        $conexao = new Conexao();
-
-        $dbconn = $conexao->conectar();
-
-        pg_query($dbconn, "begin");
-
-        if($filtro=='Entrada'){
-
-            $query = "SELECT * FROM sugestao WHERE excluido = 'f' AND arquivado = 'f'";
-            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
-
-            pg_query($dbconn, "commit");
-
-            return $resultado;
-        }
-
-        else if($filtro=='Arquivadas'){
-            $query = "SELECT * FROM sugestao WHERE arquivado = 't' ";
-            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
-
-            pg_query($dbconn, "commit");
-
-            return $resultado;
-        }
-
-        else{
-            $query = "SELECT * FROM sugestao WHERE excluido = 't' ";
-            $resultado = pg_query($dbconn, $query); // Executa a query $query na conexão $db
-
-            pg_query($dbconn, "commit");
-
-            return $resultado;
-        }
-    }
-*/
-
 
 }
 

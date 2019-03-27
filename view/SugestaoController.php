@@ -22,9 +22,13 @@ if($acao) {
             $rq3 = $_POST["radio_respostaq3"];
             $rq4 = $_POST["radio_respostaq4"];
 
-            $valores = array(
-                $rq1,$rq2,$rq3,$rq4
-            );
+            $respostas = new Matheus\Models\Respostas();
+
+            $respostas->save($rq1,$rq2,$rq3,$rq4);
+
+            header('Location: view/'.$destino.'.php');
+
+        break;
 
 
         case 'enviar':
