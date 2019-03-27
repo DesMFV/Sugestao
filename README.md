@@ -55,7 +55,7 @@ Este projeto gera uma interface destinada ao público geral, com o fim de, colet
 
     * ``` insert into opcoes(opcao_descricao,opcao_valor)values('Muito Insatisfeito',5) ```.
 
-    * ``` create table respostas(id serial primary key, Data date not null, pergunta integer references perguntas(id) not null, opcao integer references opcoes(id) not null) ```.
+    * ``` create table respostas(id serial primary key, Data timestamp not null, pergunta integer references perguntas(id) not null, opcao integer references opcoes(id) not null) ```.
 
 ### Passo 2:
 
