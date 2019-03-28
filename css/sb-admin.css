@@ -684,13 +684,14 @@ pre code {
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 100%;
 }
 
 .no-gutters {
@@ -1414,8 +1415,10 @@ pre code {
   .col-lg-8 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 66.66667%;
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+    flex: 55 0 66.66667%;
+    max-width: 100%;
+    position: relative;
+    left: 1.2%;
   }
   .col-lg-9 {
     -webkit-box-flex: 0;

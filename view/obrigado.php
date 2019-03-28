@@ -41,8 +41,11 @@
                         <label class="f1">Obrigado por sua colaboração!</label>
                         <label class="f2">Com sua ajuda, realmente somos 10.</label>
                     </div>
-
-                    <input class="form-submit" type="submit" value="Enviar">
+                    
+                        <div class="env-sug">
+                            <a href="https://www.urcamp.edu.br/" class="a-env" value="Adicionar">VOLTAR</a>
+                        </div>
+                   
                     <!-- ============= fim SUGESTÃO =============-->
                 </div>
 

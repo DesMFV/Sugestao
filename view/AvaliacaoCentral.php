@@ -49,19 +49,20 @@
                     $p = new Matheus\Models\Perguntas();
 
                     $perguntas = array(
-                       1 => $p->getPergunta(1),$p->getPergunta(2),$p->getPergunta(3), $p->getPergunta(4)
+                       1 => $p->getPergunta(1),$p->getPergunta(2)
                     )
                     ;
 
                     $pergunta = 0;
                     $opcao = 0;
+                    $cq=1;
 
                         foreach ($perguntas as $key => $value) {
 
                             ++$pergunta;
 
                         echo "
-                <div class=\"question\">
+                <div class=\"question q-".++$cq."\">
 
                 <label class=\"form-pergunta\" for=\"asdf\" name=\"pergunta\"> $value </label>
 

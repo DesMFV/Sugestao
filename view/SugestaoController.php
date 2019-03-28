@@ -48,7 +48,7 @@ if($acao) {
             $sug->setAssunto($_POST["assunto"]);
             $sug->setSugestao($_POST["txtSugestao"]);
             
-            include 'view/formulario.php';
+            include 'view/obrigado.php';
 
             echo
         "

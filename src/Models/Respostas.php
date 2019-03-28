@@ -88,6 +88,37 @@ class Respostas
 
     }
 
+    public function resultSearch($q)
+    {
+        $conexao = new Conexao();
+
+        $base = "pesquisa";
+
+        $dbconn = $conexao->conectar($base);
+
+        $sql1 = "SELECT COUNT(opcao) FROM respostas WHERE pergunta = $q";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+
+        $countValue = pg_fetch_object($res1);
+
+        $sql2 = "SELECT SUM(opcao) FROM respostas WHERE pergunta = $q";
+
+        $res2 = pg_query($dbconn,$sql2) or die(pg_last_error($dbconn));
+
+        $sum = pg_fetch_object($res2);
+
+        $finalResult = $sum->sum/$countValue->count;
+
+        pg_query($dbconn, "commit");
+
+        $result = $finalResult;
+
+        return $result;
+    }
+
+
+
 }
 
  

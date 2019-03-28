@@ -109,7 +109,7 @@
                     <span class="tab-selected">Sugestões</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="grafico.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Aval Central</span></a>
             </li>

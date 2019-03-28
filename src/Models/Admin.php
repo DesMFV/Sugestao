@@ -90,7 +90,7 @@ class Admin
 
 #=============================================== Funções de banco ============================================#
 
-    public function save()
+   /* public function save()
     {
         $conexao = new Conexao();
 
@@ -124,5 +124,5 @@ class Admin
         </script>"
         ;
 
-    }
+    }*/
 }

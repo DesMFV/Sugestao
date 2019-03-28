@@ -496,6 +496,22 @@ html, body{
 
       }
 
+      .q-2{
+        visibility: hidden;
+      }
+
+      .q-3{
+        position: relative;
+        top:-37%;
+
+        visibility: visible;
+
+      }
+
+      .q-4{
+
+      }
+
       .payment-method:hover{
         background-color: #8c3c9a;
       }
@@ -516,7 +532,7 @@ html, body{
         position: absolute;
         text-indent: 100%;
         white-space: nowrap;
-        width: 200px;
+        width: 127px;
         height: 50px;
         border-radius: 80px;
         
