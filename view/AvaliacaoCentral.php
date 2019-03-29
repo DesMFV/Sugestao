@@ -62,7 +62,7 @@
                             ++$pergunta;
 
                         echo "
-                <div class=\"question q-".++$cq."\">
+                <div class=\"question q-".$cq++."\">
 
                 <label class=\"form-pergunta\" for=\"asdf\" name=\"pergunta\"> $value </label>
 

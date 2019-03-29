@@ -1,0 +1,368 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+.form-sugestao{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pag{
+            
+    height: 100%;
+    
+}
+
+.pag-info{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(243, 118, 1);
+    height:50%;
+}
+.pag-banner{
+    right: 20px;
+    width: 100%;
+}
+
+.banner{
+    width: 100%;
+    height: 105%;
+}
+
+.box-form{
+  
+    width: 88%;
+    margin: 5% 0 5% 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: white;
+    font-family: "Montserrat";
+}
+
+.item-box{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 5%;
+}
+
+.form-submit{
+    border-radius: 50px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 40px;
+    border: none;
+    color: #636363;
+    margin-top: 0;
+    font-family: "Montserrat";
+    position: relative;
+    top: 10%;
+}
+.form-submit:hover{
+    color: #fff;
+    background-color: #185029;
+    
+}
+
+.box-home{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5% 0 5% 0;
+}
+.env-sug{
+    border-radius: 50px;
+    background-color: #44554900;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 40px;
+    align-items: center;
+}
+.a-env{
+    color: #636363;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffffff;
+    background-image: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    font-family: "Montserrat";
+    line-height: 40px;
+    position: relative;
+}
+.a-env:hover{
+    color: #fff;
+    background-color: #185029;
+}
+
+.form-submit{
+    border-radius: 50px;
+    background-color: #b4b4b4;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: #636363;
+    margin-top: 0;
+    font-family: "Montserrat";
+}
+.form-submit:hover{
+    color: #fff;
+    background-color: #8c3c9a;
+    
+}
+
+.env-env{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    width: 88%;
+   
+}
+.link-legend{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 20px;
+}
+
+.e-env-env{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.env-sug{
+    border-radius: 50px;
+    background-color: #1d272000;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+}
+.a-env{
+    color: #636363;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #b4b4b4;
+    background-image: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    font-family: "Montserrat";
+    line-height: 40px;
+    position: relative;
+}
+.a-env:hover{
+    color: #fff;
+    background-color: #8c3c9a;
+}
+.form-textarea{
+    height: 150px;
+    width: 100%;
+    margin: 3%;
+}
+.form-title{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 30px;
+    margin: 1% 0 2% 0; 
+}
+
+.questionq1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0 0 4% 0;
+    position: relative;
+top: 3%;
+}
+
+.questionq2{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0 0 4% 0;
+    position: relative;
+    top:-19%;
+}
+
+.questionq3{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0 0 4% 0;
+    position: relative;
+    top:-41.5%;
+}
+
+.questionq4{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0 0 4% 0;
+    position: relative;
+    top:-37%;
+}
+
+
+.position-q{
+    position: fixed;
+    top: 11%;
+    border: 1px solid red;
+    width: 730px;
+    height: 130px;
+}
+
+.position-btnp{
+
+}
+
+.position-btnv{
+
+}
+
+.btnp1{
+    position: relative;
+    top:7%;
+    left: 41%;
+}
+
+.btnp2{
+    position: relative;
+    top:-14%;
+    left: 41%;
+}
+.btnp4{
+
+}
+
+
+
+.form-pergunta{
+    font-family: "Montserrat";
+    color:#8c3c9a;
+    font-size: 20px;
+    margin: 0 0 3% 0;
+}
+.div-of-form{
+    color: #e1e1e1;
+    height: 1px;
+    font-size: 1px;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin: 0 0 0% 0;
+}
+
+.-p{
+    margin: 0 0 3% 0;
+}
+
+.-s{
+    margin: 3% 0 6% 0;
+}
+
+.question-radios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .question-radios:after {
+    content: "";
+    clear: both;
+  }
+  
+  .payment-method {
+    display: flex;
+    background-color: rgb(52, 173, 0);
+    height: 50px;
+    width: 100%;
+    border-radius: 70px;
+    justify-content:space-between;
+    align-items: center;
+    text-align: center;
+    color:rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: bold;
+
+  }
+
+  
+
+  .payment-method:hover{
+    background-color: #8c3c9a;
+  }
+
+  .span-of-option{
+      position: relative;
+      left: -3px;
+  }
+
+  .payment-method + .payment-method {
+    margin-left: 10px;
+  }
+
+  .payment-method label {
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    position: absolute;
+    text-indent: 100%;
+    white-space: nowrap;
+    width: 127px;
+    height: 50px;
+    border-radius: 80px;
+    
+  }
+
+
+  .payment-method input:checked + label{
+    border: 4px solid #8c3c9a;
+  }
+
+  .radio-teste{
+      width: 0;
+      height: 0;
+      position: relative;
+      left: -10px;
+  }

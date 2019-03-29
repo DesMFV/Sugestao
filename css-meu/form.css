@@ -271,12 +271,12 @@ html, body{
                 
         height: 100%;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column;
         
     }
     .pag-info{
         
-        width: 50%;
+        width: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -285,13 +285,14 @@ html, body{
     }
     .pag-banner{
         right: 20px;
-        width: 50%;
+        width: 100%;
         height: 100%;
         background-image: url(../img/logo_graduacaoi-2.png) !important;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
+    
     .box-form{
         display: flex;
         width: 88%;
@@ -433,13 +434,82 @@ html, body{
         margin: 1% 0 2% 0; 
     }
 
-    .question{
+    .questionq1{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-around;
         margin: 0 0 4% 0;
+        position: relative;
+    top: 3%;
     }
+
+    .questionq2{
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        margin: 0 0 4% 0;
+        position: relative;
+        top:-19%;
+    }
+
+    .questionq3{
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        margin: 0 0 4% 0;
+        position: relative;
+        top:-41.5%;
+    }
+
+    .questionq4{
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        margin: 0 0 4% 0;
+        position: relative;
+        top:-37%;
+    }
+
+
+    .position-q{
+        position: fixed;
+        top: 11%;
+        border: 1px solid red;
+        width: 730px;
+        height: 130px;
+    }
+
+    .position-btnp{
+
+    }
+
+    .position-btnv{
+
+    }
+
+    .btnp1{
+        position: relative;
+        top:7%;
+        left: 41%;
+    }
+
+    .btnp2{
+        position: relative;
+        top:-14%;
+        left: 41%;
+    }
+    .btnp4{
+
+    }
+
+
 
     .form-pergunta{
         font-family: "Montserrat";
@@ -496,21 +566,7 @@ html, body{
 
       }
 
-      .q-2{
-        visibility: hidden;
-      }
-
-      .q-3{
-        position: relative;
-        top:-37%;
-
-        visibility: visible;
-
-      }
-
-      .q-4{
-
-      }
+      
 
       .payment-method:hover{
         background-color: #8c3c9a;
