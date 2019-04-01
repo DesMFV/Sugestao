@@ -3,11 +3,9 @@ html, body{
     margin: 0;
 }
 .pag{
-            
     height: 100%;
     display: flex;
     flex-direction: row-reverse;
-    
 }
 
 .file{
@@ -271,7 +269,7 @@ html, body{
                 
         height: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         
     }
     .pag-info{

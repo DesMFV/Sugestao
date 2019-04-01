@@ -2,49 +2,20 @@ html, body{
     height: 100%;
     margin: 0;
 }
-.form-sugestao{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.pag{
-            
+.pag{  
     height: 100%;
-    
+    display: flex;
+    flex-direction: column;
 }
 
-.pag-info{
-    
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(243, 118, 1);
-    height:50%;
-}
+
 .pag-banner{
-    right: 20px;
-    width: 100%;
+    background-color: aqua;
 }
 
 .banner{
     width: 100%;
-    height: 105%;
-}
-
-.box-form{
-  
-    width: 88%;
-    margin: 5% 0 5% 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    color: white;
-    font-family: "Montserrat";
+    height: 100%;
 }
 
 .item-box{
@@ -55,23 +26,8 @@ html, body{
     align-items: center;
     width: 100%;
     position: relative;
-    top: 5%;
 }
 
-.form-submit{
-    border-radius: 50px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    height: 40px;
-    border: none;
-    color: #636363;
-    margin-top: 0;
-    font-family: "Montserrat";
-    position: relative;
-    top: 10%;
-}
 .form-submit:hover{
     color: #fff;
     background-color: #185029;
@@ -119,12 +75,14 @@ html, body{
     background-color: #b4b4b4;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 60%;
     height: 40px;
     border: none;
     color: #636363;
     margin-top: 0;
     font-family: "Montserrat";
+    position: absolute;
+    top: 90%;
 }
 .form-submit:hover{
     color: #fff;
@@ -193,7 +151,76 @@ html, body{
     color:#8c3c9a;
     font-size: 30px;
     margin: 1% 0 2% 0; 
+    position: absolute;
+    top: 55%;
 }
+
+.questions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.box-questions{
+    margin: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: white;
+    font-family: "Montserrat";
+    background-color: orange;
+}
+
+.form-question{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
+    background-color: orange;
+    
+
+}
+
+.box-question1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: visible;
+    position: relative;
+    left:40%;
+    visibility: hidden;
+}
+
+.box-question2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: visible;
+    position: relative;
+    left: 14%;
+}
+.box-question3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: hidden;
+}
+
+.box-question4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: hidden;
+}
+
 
 .questionq1{
     display: flex;
@@ -201,47 +228,39 @@ html, body{
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
-    position: relative;
-top: 3%;
 }
 
 .questionq2{
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
-    position: relative;
-    top:-19%;
+    width: 61%;
 }
 
 .questionq3{
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
-    position: relative;
-    top:-41.5%;
-}
 
+}
 .questionq4{
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
+    width: 61%;
     position: relative;
-    top:-37%;
+    left: -4.8%;
 }
 
 
 .position-q{
     position: fixed;
-    top: 11%;
     border: 1px solid red;
     width: 730px;
     height: 130px;
@@ -256,20 +275,46 @@ top: 3%;
 }
 
 .btnp1{
+    height: 20%;
+    margin-left: 2%;
     position: relative;
-    top:7%;
-    left: 41%;
+    left: 4.6%;
+    visibility: hidden;
 }
 
 .btnp2{
+    height: 20%;
+    margin-left: 2%;
+    visibility: visible;
+}
+.btnp3{
+    height: 20%;
+    margin-left: 2%;
     position: relative;
-    top:-14%;
-    left: 41%;
-}
-.btnp4{
-
+    top: -1%;
+    visibility: hidden;
 }
 
+.btnv2{
+    height: 20%;
+    margin-right: 2%;
+    visibility: visible;
+}
+
+
+.btnv3{
+    height: 20%;
+    margin-right: 2%;
+    visibility: hidden;
+}
+
+.btnv4{
+    height: 20%;
+    margin-right: 2%;
+    position: relative;
+    left: -4.6%;
+    visibility: hidden;
+}
 
 
 .form-pergunta{
@@ -349,7 +394,7 @@ top: 3%;
     position: absolute;
     text-indent: 100%;
     white-space: nowrap;
-    width: 127px;
+    width: 183px;
     height: 50px;
     border-radius: 80px;
     
