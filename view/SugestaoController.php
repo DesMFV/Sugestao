@@ -24,9 +24,18 @@ if($acao) {
 
             $respostas = new Matheus\Models\Respostas();
 
+            echo
+        "
+        <script src=\"node_modules/sweetalert2/dist/sweetalert2.js\">
+        </script>"
+        ;
+
             $respostas->save($rq1,$rq2,$rq3,$rq4);
 
-            header('Location: view/'.$destino.'.php');
+
+            include 'view/obrigado.php';
+
+            
 
         break;
 

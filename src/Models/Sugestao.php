@@ -120,8 +120,8 @@ class Sugestao
         echo
         "<script>
         Swal.fire(
-            'Sugestão enviada com sucesso!',
-            '',
+            'Pronto!',
+            'Sugestão enviada com sucesso.',
             'sucess'
         )
         </script>"

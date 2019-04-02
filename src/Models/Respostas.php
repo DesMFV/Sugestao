@@ -86,6 +86,15 @@ class Respostas
 
             $this->msg = $res1;
 
+            echo"
+            <script>
+        Swal.fire(
+            'Pronto!',
+            'Respostas enviadas com sucesso.',
+            'sucess'
+        )
+        </script>";
+
     }
 
     public function resultSearch($q)

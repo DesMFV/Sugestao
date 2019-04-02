@@ -5,14 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script type="text/javascript" src="js/inputFile.js"></script>
-    <script>
-        (function(e, t, n) {
-            var r = e.querySelectorAll("html")[0];
-            r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
-        })(document, window, 0);
-    </script>
+    <title>urcamp</title>
 
     <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../css-meu/obrigado.css">

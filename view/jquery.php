@@ -13,105 +13,55 @@
     <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
-       /* $(document).ready(
-
+        $(document).ready(
             function() {
-                $("#btnp2").css("visibility", "hidden");
-                $("#btnp3").css("visibility", "hidden");
-                $("#btnp4").css("visibility", "hidden");
-                $("#btnv2").css("visibility", "hidden");
-                $("#btnv3").css("visibility", "hidden");
-                $("#btnv4").css("visibility", "hidden");
+                $("#btnv").css("visibility", "hidden");
                 $("#box-question2").css("visibility", "hidden");
                 $("#box-question3").css("visibility", "hidden");
                 $("#box-question4").css("visibility", "hidden");
-
             }
         );
-
         $(function() {
 
-            $("#btnp1").click(function() {
+            var valorbtn = 0;
 
-                $("#box-question1").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "visible");
-                $("#btnp1").css("visibility", "hidden");
-                $("#btnp2").css("visibility", "visible");
-                $("#btnv2").css("visibility", "visible");
-
+            $("#btnp").click(function() {
+                if (valorbtn == 0) {
+                    valorbtn = 1;
+                    $("#box-question" + valorbtn).css("visibility", "hidden");
+                    valorbtn++;
+                    $("#box-question" + valorbtn).css("visibility", "visible");
+                    $("#btnv").css("visibility", "visible");
+                } else if (valorbtn < 3) {
+                    $("#box-question" + valorbtn).css("visibility", "hidden");
+                    valorbtn++;
+                    $("#box-question" + valorbtn).css("visibility", "visible");
+                } else if (valorbtn == 3) {
+                    $("#btnp").css("visibility", "hidden");
+                    $("#box-question" + valorbtn).css("visibility", "hidden");
+                    valorbtn++;
+                    $("#box-question" + valorbtn).css("visibility", "visible");
+                }
             });
 
-            $("#btnv2").click(function() {
+            $("#btnv").click(function() {
 
-                $("#box-question1").css("visibility", "visible");
-                $("#box-question2").css("visibility", "hidden");
-                $("#btnp1").css("visibility", "visible");
-                $("#btnp2").css("visibility", "hidden");
-                $("#btnv2").css("visibility", "hidden");
-
+                if (valorbtn == 2) {
+                    $("#box-question" + valorbtn).css("visibility", "hidden");
+                    valorbtn--;
+                    $("#box-question" + valorbtn).css("visibility", "visible");
+                    $("#btnv").css("visibility", "hidden");
+                    $("#btnp").css("visibility", "visible");
+                    valorbtn--;
+                } else {
+                    $("#box-question" + valorbtn).css("visibility", "hidden");
+                    valorbtn--;
+                    $("#box-question" + valorbtn).css("visibility", "visible");
+                    $("#btnv").css("visibility", "visible");
+                    $("#btnp").css("visibility", "visible");
+                }
             });
-
-            $("#btnp2").click(function() {
-
-                $("#box-question1").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "hidden");
-                $("#box-question3").css("visibility", "visible");
-                $("#btnp1").css("visibility", "hidden");
-                $("#btnp2").css("visibility", "hidden");
-                $("#btnv2").css("visibility", "hidden");
-                $("#btnp3").css("visibility", "visible");
-                $("#btnv3").css("visibility", "visible");
-
-            });
-
-            $("#btnv3").click(function() {
-
-                $("#box-question1").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "visible");
-                $("#box-question3").css("visibility", "hidden");
-                $("#btnp1").css("visibility", "hidden");
-                $("#btnp2").css("visibility", "visible");
-                $("#btnv2").css("visibility", "visible");
-                $("#btnp3").css("visibility", "hidden");
-                $("#btnv3").css("visibility", "hidden");
-
-            });
-
-            $("#btnp3").click(function() {
-
-                $("#box-question1").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "hidden");
-                $("#box-question3").css("visibility", "hidden");
-                $("#box-question4").css("visibility", "visible");
-                $("#btnp1").css("visibility", "hidden");
-                $("#btnp2").css("visibility", "hidden");
-                $("#btnv2").css("visibility", "hidden");
-                $("#btnp3").css("visibility", "hidden");
-                $("#btnv3").css("visibility", "hidden");
-                $("#btnv4").css("visibility", "visible");
-
-            });
-
-            $("#btnv4").click(function() {
-
-                $("#box-question1").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "hidden");
-                $("#box-question3").css("visibility", "visible");
-                $("#box-question4").css("visibility", "hidden");
-                $("#btnp1").css("visibility", "hidden");
-                $("#btnp2").css("visibility", "hidden");
-                $("#btnv2").css("visibility", "hidden");
-                $("#btnp3").css("visibility", "visible");
-                $("#btnv3").css("visibility", "visible");
-                $("#btnv4").css("visibility", "hidden");
-
-            });
-
-
-
-
-
-        });*/
+        });
     </script>
 
 </head>
@@ -119,80 +69,66 @@
 <body>
     <div class="pag">
 
-
-
         <div class="pag-banner">
             <img class="banner" src="../img/obrigado-banner.png">
         </div>
 
+        <div class="pag-info">
+            <!-- ============= inicio ÁREA INTERAÇÃO =============-->
+
+            <!-- ============= inicio INTERAÇÃO =============-->
 
 
-        <!-- ============= inicio ÁREA INTERAÇÃO =============-->
+            <div class="box-questions">
+
+                <h1 class="form-title">Pesquisa de satisfação</h1>
+
+            </div>
+            <!-- ============= inicio SUGESTÃO =============-->
+            <form class="form-question" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa&destino=obrigado" enctype="multipart/form-data">
+                <div class="questions">
+
+                    <input type="button" class="btnp" id="btnp">
+
+                    <?php
 
 
+                    require '../vendor/autoload.php';
 
+                    $o = new Matheus\Models\Opcoes();
 
-        <!-- ============= inicio INTERAÇÃO =============-->
+                    $opcoes = array(
+                        1 => $o->getOpcao(1), $o->getOpcao(2), $o->getOpcao(3), $o->getOpcao(4), $o->getOpcao(5)
+                    );
 
+                    $p = new Matheus\Models\Perguntas();
 
-        <div class="box-questions">
+                    $perguntas = array(
+                        1 => $p->getPergunta(1), $p->getPergunta(2), $p->getPergunta(3), $p->getPergunta(4)
+                    );
 
-            <h1 class="form-title">Pesquisa de satisfação</h1>
+                    $pergunta = 0;
+                    $opcao = 0;
+                    $cq = 1;
+                    $proximaQuestao;
 
-        </div>
-        <!-- ============= inicio SUGESTÃO =============-->
-        <form class="form-question" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa&destino=obrigado" enctype="multipart/form-data">
-            <div class="questions">
+                    foreach ($perguntas as $key => $value) {
 
-                <?php
+                        ++$pergunta;
 
-
-                require '../vendor/autoload.php';
-
-                $o = new Matheus\Models\Opcoes();
-
-                $opcoes = array(
-                    1 => $o->getOpcao(1), $o->getOpcao(2), $o->getOpcao(3), $o->getOpcao(4), $o->getOpcao(5)
-                );
-
-                $p = new Matheus\Models\Perguntas();
-
-                $perguntas = array(
-                    1 => $p->getPergunta(1), $p->getPergunta(2), $p->getPergunta(3), $p->getPergunta(4)
-                );
-
-                $pergunta = 0;
-                $opcao = 0;
-                $cq = 1;
-                $proximaQuestao;
-
-                foreach ($perguntas as $key => $value) {
-
-                    ++$pergunta;
-
-                    if ($cq > 3) {
-                        $btnp = '';
-                    } else {
-                        $btnp = "<input type=\"button\" class=\"btnp" . $cq . "\" 
-                            id=\"btnp" . $cq . "\" Value=\"Próxima questão\">";
-                    }
-                    if ($cq > 1) {
-                        $btnv = "<input type=\"button\" class=\"btnv" . $cq . "\" 
-                            id=\"btnv" . $cq . "\" Value=\"Questão anterior\">";
-                    } else {
-                        $btnv = '';
-                    }
-
-
-                    echo "
+                        echo "
 
                         <div id=\"box-question" . $cq . "\" class=\"box-question" . $cq . "\">
-
-                        " . $btnv . "
         
                         <div id=\"questionq" . $cq . "\" class=\"questionq" . $cq++ . "\">
 
+                        <div class=\"q-space\">
+
                         <label class=\"form-pergunta\" for=\"asdf\" name=\"pergunta\"> $value </label>
+
+                        </div>
+
+                        <div class=\"r-space\">
 
                         <ul class=\"question-radios\">
 
@@ -223,36 +159,34 @@
                         </ul>
 
                         </div>
+
+                        </div>
         
                         " . $btnp . "
                         
                         </div>";
-                    $opcao = 0;
-                }
+                        $opcao = 0;
+                    }
 
-                ?>
+                    ?>
 
-            </div>
+                    <input type="button" class="btnv" id="btnv">
 
-            <input class="form-submit" type="submit" value="Enviar Pesquisa">
+                </div>
 
-
-
-
-
-        </form>
-
-        <!-- ============= fim SUGESTÃO =============-->
+                <input class="form-submit" type="submit" value="Enviar Pesquisa">
 
 
+                <div class="div-of-form -s">.</div>
 
-        <!-- ============= fim INTERAÇÃO =============-->
-        <!--============= inicio HOME =============-->
+                <a href="../index.php" class="a-env" value="Adicionar">Deixe também uma sugestão crítica</a>
 
-
-
-        <!-- ============= fim ÁREA INTERAÇÃO =============-->
-
+            </form>
+            <!-- ============= fim SUGESTÃO =============-->
+            <!-- ============= fim INTERAÇÃO =============-->
+            <!--============= inicio HOME =============-->
+            <!-- ============= fim ÁREA INTERAÇÃO =============-->
+        </div>
 
     </div>
 
