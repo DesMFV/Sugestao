@@ -40,14 +40,7 @@
         </button>
 
         <!-- Navbar Search -->
-        <form action="" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-
-            <input type="text" name="texto-pesquisa" class="form-control" placeholder="Procurar por..." aria-label="Search" aria-describedby="basic-addon2">
-
-            <input type="submit" class="btn btn-primary" value="Procurar">
-
-
-        </form>
+       
 
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
@@ -118,6 +111,42 @@
 
         <div id="content-wrapper">
 
+        <ol class="breadcrumb">
+                    <!--
+                        <li class="breadcrumb-item">
+                            <a href="#">Dashboard</a>
+                        </li> 
+                    -->
+                    <li class="breadcrumb-item active">Aval Central/
+                        De 
+                        <?php 
+                                require '../vendor/autoload.php';
+                                $datait = $_GET["data-inicio"];
+                                $datalt = $_GET["data-limite"];
+
+                                if (isset($datait)&&isset($datalt)) {
+                                    echo "$datait até $datalt";
+                                } 
+                                
+                                else {
+
+                                    $d = new Matheus\Models\Respostas();
+
+                                    $dmax = $d -> getMaxDate();
+
+                                    $datamax = $dmax->max;
+
+                                    $dmin = $d -> getMinDate();
+
+                                    $datamin = $dmin->min;
+
+                                    echo "$datamin até $datamax";
+                                }
+                        ?>
+                    </li>
+                </ol>
+
+
 
         <div class="row">
                     <div class="col-lg-8">
@@ -127,52 +156,40 @@
                                 
                             <?php
 
-if(isset($_GET["texto-pesquisa"])) { 
-    echo "<a href=\"admin.php\">Sair da pesquisa</a>";
-} 
+    require '../vendor/autoload.php';
 
-else {
+    $datait = $_GET["data-inicio"];
+    $datalt = $_GET["data-limite"];
 
-    $selecionado = $_GET["filtro"];
-
-    if ($selecionado == 'Entrada') {
-        echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-    <input type=\"submit\" value=\"Filtrar\">
-    <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
-        <option selected=\"selected\" value=\"Entrada\">Entrada</option>
-        <option value=\"Arquivadas\">Arquivadas</option>
-        <option value=\"Excluidas\">Excluidas</option>
-    </select>
-    </form>";
-    } else if ($selecionado == 'Arquivadas') {
-        echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-    <input type=\"submit\" value=\"Filtrar\">
-    <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
-        <option value=\"Entrada\">Entrada</option>
-        <option selected=\"selected\" value=\"Arquivadas\">Arquivadas</option>
-        <option value=\"Excluidas\">Excluidas</option>
-    </select>
-    </form>";
-    } else if ($selecionado == 'Excluidas') {
-        echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-    <input type=\"submit\" value=\"Filtrar\">
-    <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
-        <option value=\"Entrada\">Entrada</option>
-        <option value=\"Arquivadas\">Arquivadas</option>
-        <option selected=\"selected\" value=\"Excluidas\">Excluidas</option>
-    </select>
+    if (isset($datait)&&isset($datalt)) {
+        echo "<form class=\"form-header-filter\" action=\"\" method=\"get\">
+        <input type=\"submit\" value=\"Filtrar\">
+        <span>De: </span>
+        <input type=\"date\" value=\"$datait\" name=\"data-inicio\" placeholder=\"Data inicial\">
+        <span>Até: </span>
+        <input type=\"date\" value=\"$datalt\" name=\"data-limite\" placeholder=\"Data final\">
     </form>";
     } else {
-        echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-    <input type=\"submit\" value=\"Filtrar\">
-    <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
-        <option selected=\"selected\" value=\"Entrada\">Entrada</option>
-        <option value=\"Arquivadas\">Arquivadas</option>
-        <option value=\"Excluidas\">Excluidas</option>
-    </select>
+
+        $d = new Matheus\Models\Respostas();
+
+        $dmax = $d -> getMaxDate();
+
+        $datamax = $dmax->max;
+
+        $dmin = $d -> getMinDate();
+
+        $datamin = $dmin->min;
+
+        echo "<form class=\"form-header-filter\" action=\"\" method=\"get\">
+        <input type=\"submit\" value=\"Filtrar\">
+        <span>De: </span>
+        <input type=\"date\" value=\"$datamin\" name=\"data-inicio\" placeholder=\"Data inicial\">
+        <span>Até: </span>
+        <input type=\"date\" value=\"$datamax\" name=\"data-limite\" placeholder=\"Data final\">
     </form>";
     }
-}
+
 ?>
                             </div>
                             <div class="card-body">
@@ -199,9 +216,20 @@ else {
                         require '../vendor/autoload.php';
                         $q  = new Matheus\Models\Respostas();
 
+                        $datai = $_GET['data-inicio'];
+                        $datal = $_GET['data-limite'];
+
+                        if(isset($datai)&&isset($datal)){                        
+
                         $qArray = array(
-                            1 => $q->resultSearch(1), $q->resultSearch(2), $q->resultSearch(3), $q->resultSearch(4)
+                            1 => $q->resultSearch(1,$datai,$datal), $q->resultSearch(2,$datai,$datal), $q->resultSearch(3,$datai,$datal), $q->resultSearch(4,$datai,$datal)
                         );
+                    }
+                    else{
+                        $qArray = array(
+                            1 => $q->resultDefault(1), $q->resultDefault(2), $q->resultDefault(3), $q->resultDefault(4)
+                        );
+                    }
 
                         echo "<script>
             var ctx = document.getElementById('myBarChart');
@@ -252,6 +280,7 @@ else {
                         ?>
             <!-- /.container-fluid -->
 
+            
             <!-- Sticky Footer -->
             <footer class="sticky-footer">
                 <div class="container my-auto">

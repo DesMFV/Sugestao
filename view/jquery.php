@@ -13,22 +13,30 @@
     <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
+
+    
+
         $(document).ready(
             function() {
+                $("#btnp").css("visibility", "hidden");
                 $("#btnv").css("visibility", "hidden");
+                $(".form-submit").css("visibility", "hidden");
                 $("#box-question2").css("visibility", "hidden");
                 $("#box-question3").css("visibility", "hidden");
                 $("#box-question4").css("visibility", "hidden");
             }
         );
+        
         $(function() {
 
             var valorbtn = 0;
+            var checked = 0;
 
             $("#btnp").click(function() {
                 if (valorbtn == 0) {
                     valorbtn = 1;
                     $("#box-question" + valorbtn).css("visibility", "hidden");
+                    $("#btnp").css("visibility", "visible");
                     valorbtn++;
                     $("#box-question" + valorbtn).css("visibility", "visible");
                     $("#btnv").css("visibility", "visible");
@@ -41,7 +49,41 @@
                     $("#box-question" + valorbtn).css("visibility", "hidden");
                     valorbtn++;
                     $("#box-question" + valorbtn).css("visibility", "visible");
+                    $(".form-submit").css("visibility", "visible");
                 }
+            });
+
+            
+            $(".radio-teste").click(function(){
+                    
+                if(checked!=4){
+                    window.setTimeout( function radioProxima() 
+                {
+                    if (valorbtn == 0) {
+                        valorbtn = 1;
+                        $("#box-question" + valorbtn).css("visibility", "hidden");
+                        valorbtn++;
+                        $("#box-question" + valorbtn).css("visibility", "visible");
+                        checked = 1;
+                    } else if (valorbtn < 3) {
+                        $("#box-question" + valorbtn).css("visibility", "hidden");
+                        valorbtn++;
+                        $("#box-question" + valorbtn).css("visibility", "visible");
+                        checked++;                        
+                    } else if (valorbtn == 3) {
+                        $("#btnp").css("visibility", "hidden");
+                        $("#box-question" + valorbtn).css("visibility", "hidden");
+                        valorbtn++;
+                        $("#box-question" + valorbtn).css("visibility", "visible");
+                        checked++;
+                    }
+                    else{
+                        $(".form-submit").css("visibility", "visible");
+                        checked++;
+                        $("#btnv").css("visibility", "visible");
+                    }
+                }, 560 );
+            }
             });
 
             $("#btnv").click(function() {
@@ -51,7 +93,10 @@
                     valorbtn--;
                     $("#box-question" + valorbtn).css("visibility", "visible");
                     $("#btnv").css("visibility", "hidden");
+
                     $("#btnp").css("visibility", "visible");
+
+                    $(".form-submit").css("visibility", "hidden");
                     valorbtn--;
                 } else {
                     $("#box-question" + valorbtn).css("visibility", "hidden");
@@ -59,9 +104,13 @@
                     $("#box-question" + valorbtn).css("visibility", "visible");
                     $("#btnv").css("visibility", "visible");
                     $("#btnp").css("visibility", "visible");
+                    $(".form-submit").css("visibility", "hidden");
                 }
             });
         });
+        
+        
+        
     </script>
 
 </head>

@@ -75,9 +75,9 @@ class Respostas
 
         for($i=1;$i<5;$i++){
 
-            $data = date('Y-m-d H:i:s');
+            $data = date('Y-m-d');
 
-            $sql1 = "INSERT INTO respostas (data,pergunta,opcao) VALUES ("."'".$data."'".",{$i},".$opcoes[$i].")";
+            $sql1 = "INSERT INTO respostas (data_baixa,pergunta,opcao) VALUES ("."'".$data."'".",{$i},".$opcoes[$i].")";
 
             $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
         }
@@ -85,19 +85,9 @@ class Respostas
             pg_query($dbconn, "commit");
 
             $this->msg = $res1;
-
-            echo"
-            <script>
-        Swal.fire(
-            'Pronto!',
-            'Respostas enviadas com sucesso.',
-            'sucess'
-        )
-        </script>";
-
     }
 
-    public function resultSearch($q)
+    public function resultSearch($q,$datai,$datal)
     {
         $conexao = new Conexao();
 
@@ -105,7 +95,7 @@ class Respostas
 
         $dbconn = $conexao->conectar($base);
 
-        $sql1 = "SELECT COUNT(opcao) FROM respostas WHERE pergunta = $q";
+        $sql1 = "SELECT COUNT(opcao) FROM respostas WHERE pergunta = $q AND data_baixa BETWEEN "."'".$datai."'"." AND "."'".$datal."'";
 
         $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
 
@@ -125,6 +115,85 @@ class Respostas
 
         return $result;
     }
+
+    public function getMinDate(){
+
+        $conexao = new Conexao();
+
+        $base = "pesquisa";
+
+        $dbconn = $conexao->conectar($base);
+
+        $sqlmin = "SELECT MIN(data_baixa) FROM respostas";
+
+        $resmin = pg_query($dbconn,$sqlmin) or die(pg_last_error($dbconn));
+
+        $datamin = pg_fetch_object($resmin);
+
+        pg_query($dbconn, "commit");
+
+        return $datamin;
+
+    }
+
+    public function getMaxDate(){
+
+        $conexao = new Conexao();
+
+        $base = "pesquisa";
+
+        $dbconn = $conexao->conectar($base);
+
+        $sqlmax = "SELECT MAX(data_baixa) FROM respostas";
+
+        $resmax = pg_query($dbconn,$sqlmax) or die(pg_last_error($dbconn));
+
+        $datamax = pg_fetch_object($resmax);
+
+        pg_query($dbconn, "commit");
+
+        return $datamax;
+
+    }
+
+    public function resultDefault($q)
+    {
+        $conexao = new Conexao();
+
+        $base = "pesquisa";
+
+        $dbconn = $conexao->conectar($base);
+
+        $dmin = $this->getMinDate();
+
+        $datamin = $dmin->min;
+
+        $dmax = $this->getMaxDate();
+
+        $datamax = $dmax->max;
+
+        $sql1 = "SELECT COUNT(opcao) FROM respostas WHERE pergunta = $q AND data_baixa BETWEEN "."'".$datamin."'"." AND "."'".$datamax."'";
+
+        $res1 = pg_query($dbconn,$sql1) or die(pg_last_error($dbconn));
+
+        $countValue = pg_fetch_object($res1);
+
+        $sql2 = "SELECT SUM(opcao) FROM respostas WHERE pergunta = $q";
+
+        $res2 = pg_query($dbconn,$sql2) or die(pg_last_error($dbconn));
+
+        $sum = pg_fetch_object($res2);
+
+        $finalResult = $sum->sum/$countValue->count;
+
+        pg_query($dbconn, "commit");
+
+        $result = $finalResult;
+
+        return $result;
+    }
+
+
 
 
 

@@ -212,7 +212,7 @@ html, body{
     justify-content: center;
     width: 100%;
     position: relative;
-    top: -34%;
+    top: -34.5%;
 }
 
 
@@ -222,6 +222,7 @@ html, body{
     align-items: center;
     justify-content: space-around;
     margin: 0 0 4% 0;
+    height: 222%;
 }
 
 .questionq2{
@@ -230,6 +231,7 @@ html, body{
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
+    height: 222%;
 }
 
 .questionq3{
@@ -239,7 +241,7 @@ html, body{
     justify-content: space-around;
     margin: 0 0 4% 0;
     width: 89%;
-
+    height: 183%;
 }
 .questionq4{
     display: flex;
@@ -247,6 +249,7 @@ html, body{
     align-items: flex-start;
     justify-content: space-around;
     margin: 0 0 4% 0;
+    height: 222%;
 }
 
 

@@ -24,18 +24,9 @@ if($acao) {
 
             $respostas = new Matheus\Models\Respostas();
 
-            echo
-        "
-        <script src=\"node_modules/sweetalert2/dist/sweetalert2.js\">
-        </script>"
-        ;
-
             $respostas->save($rq1,$rq2,$rq3,$rq4);
 
-
-            include 'view/obrigado.php';
-
-            
+            header('Location: view/obrigado.php?pronto=pesquisa');
 
         break;
 
@@ -56,17 +47,10 @@ if($acao) {
             $sug->setEmail($_POST["email"]);
             $sug->setAssunto($_POST["assunto"]);
             $sug->setSugestao($_POST["txtSugestao"]);
-            
-            include 'view/obrigado.php';
-
-            echo
-        "
-        <script src=\"node_modules/sweetalert2/dist/sweetalert2.js\">
-        </script>"
-        ;
 
             $sug->save();
-            
+
+            header('Location: view/obrigado.php?pronto=sugestao');
 
         break;
 
