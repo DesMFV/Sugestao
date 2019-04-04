@@ -13,89 +13,89 @@
     <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
-
-    
-
         $(document).ready(
             function() {
-                $("#btnp").css("visibility", "hidden");
-                $("#btnv").css("visibility", "hidden");
-                $(".form-submit").css("visibility", "hidden");
-                $("#box-question2").css("visibility", "hidden");
-                $("#box-question3").css("visibility", "hidden");
-                $("#box-question4").css("visibility", "hidden");
+
+                if (window.matchMedia('min-width: 769px').matches) {
+                    $("#btnp").css("visibility", "hidden");
+                    $("#btnv").css("visibility", "hidden");
+                    $(".form-submit").css("visibility", "hidden");
+                    $("#box-question2").css("visibility", "hidden");
+                    $("#box-question3").css("visibility", "hidden");
+                    $("#box-question4").css("visibility", "hidden");
+                }
             }
         );
-        
+
+
         $(function() {
-
-            var valorbtn = 0;
-            var checked = 0;
-
-            $("#btnp").click(function() {
-                if (valorbtn == 0) {
-                    valorbtn = 1;
-                    $("#box-question" + valorbtn).css("visibility", "hidden");
-                    $("#btnp").css("visibility", "visible");
-                    valorbtn++;
-                    $("#box-question" + valorbtn).css("visibility", "visible");
-                    $("#btnv").css("visibility", "visible");
-                } else if (valorbtn < 3) {
-                    $("#box-question" + valorbtn).css("visibility", "hidden");
-                    valorbtn++;
-                    $("#box-question" + valorbtn).css("visibility", "visible");
-                } else if (valorbtn == 3) {
-                    $("#btnp").css("visibility", "hidden");
-                    $("#box-question" + valorbtn).css("visibility", "hidden");
-                    valorbtn++;
-                    $("#box-question" + valorbtn).css("visibility", "visible");
-                    $(".form-submit").css("visibility", "visible");
+            if (window.matchMedia('min-width: 769px').matches) {
+                var valorbtn = 0;
+                var checked = 0;
+                $("#btnp").click(function() {
+                        if (valorbtn == 0) {
+                            valorbtn = 1;
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            $("#btnp").css("visibility", "visible");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                            $("#btnv").css("visibility", "visible");
+                        } else if (valorbtn < 3) {
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                        } else if (valorbtn == 3) {
+                            $("#btnp").css("visibility", "hidden");
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                            $(".form-submit").css("visibility", "visible");
+                        }
+                    }
                 }
             });
 
-            
-            $(".radio-teste").click(function(){
-                    
-                if(checked!=4){
-                    window.setTimeout( function radioProxima() 
-                {
-                    if (valorbtn == 0) {
-                        valorbtn = 1;
-                        $("#box-question" + valorbtn).css("visibility", "hidden");
-                        valorbtn++;
-                        $("#box-question" + valorbtn).css("visibility", "visible");
-                        checked = 1;
-                    } else if (valorbtn < 3) {
-                        $("#box-question" + valorbtn).css("visibility", "hidden");
-                        valorbtn++;
-                        $("#box-question" + valorbtn).css("visibility", "visible");
-                        checked++;                        
-                    } else if (valorbtn == 3) {
-                        $("#btnp").css("visibility", "hidden");
-                        $("#box-question" + valorbtn).css("visibility", "hidden");
-                        valorbtn++;
-                        $("#box-question" + valorbtn).css("visibility", "visible");
-                        checked++;
-                    }
-                    else{
-                        $(".form-submit").css("visibility", "visible");
-                        checked++;
-                        $("#btnv").css("visibility", "visible");
-                    }
-                }, 560 );
+        $(".radio-teste").click(function() {
+
+            if (window.matchMedia('min-width: 769px').matches) {
+
+                if (checked != 4) {
+                    window.setTimeout(function radioProxima() {
+                        if (valorbtn == 0) {
+                            valorbtn = 1;
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                            checked = 1;
+                        } else if (valorbtn < 3) {
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                            checked++;
+                        } else if (valorbtn == 3) {
+                            $("#btnp").css("visibility", "hidden");
+                            $("#box-question" + valorbtn).css("visibility", "hidden");
+                            valorbtn++;
+                            $("#box-question" + valorbtn).css("visibility", "visible");
+                            checked++;
+                        } else {
+                            $(".form-submit").css("visibility", "visible");
+                            checked++;
+                            $("#btnv").css("visibility", "visible");
+                        }
+                    }, 560);
+                }
             }
-            });
+        });
 
-            $("#btnv").click(function() {
-
+        $("#btnv").click(function() {
+            if (window.matchMedia('min-width: 769px').matches) {
                 if (valorbtn == 2) {
                     $("#box-question" + valorbtn).css("visibility", "hidden");
                     valorbtn--;
                     $("#box-question" + valorbtn).css("visibility", "visible");
                     $("#btnv").css("visibility", "hidden");
-
                     $("#btnp").css("visibility", "visible");
-
                     $(".form-submit").css("visibility", "hidden");
                     valorbtn--;
                 } else {
@@ -106,11 +106,9 @@
                     $("#btnp").css("visibility", "visible");
                     $(".form-submit").css("visibility", "hidden");
                 }
-            });
+            }
         });
-        
-        
-        
+        });
     </script>
 
 </head>
@@ -127,49 +125,39 @@
 
             <!-- ============= inicio INTERAÇÃO =============-->
 
+            <h1 class="form-title">Pesquisa de satisfação</h1>
 
-            <div class="box-questions">
-
-                <h1 class="form-title">Pesquisa de satisfação</h1>
-
-            </div>
             <!-- ============= inicio SUGESTÃO =============-->
-            <form class="form-question" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa&destino=obrigado" enctype="multipart/form-data">
-                <div class="questions">
-
-                    <input type="button" class="btnp" id="btnp">
-
-                    <?php
+            <form class="form-container" method="POST" action="../index.php?pagina=SugestaoController&acao=enviarpesquisa&destino=obrigado" enctype="multipart/form-data">
+                <?php
 
 
-                    require '../vendor/autoload.php';
+                require '../vendor/autoload.php';
 
-                    $o = new Matheus\Models\Opcoes();
+                $o = new Matheus\Models\Opcoes();
 
-                    $opcoes = array(
-                        1 => $o->getOpcao(1), $o->getOpcao(2), $o->getOpcao(3), $o->getOpcao(4), $o->getOpcao(5)
-                    );
+                $opcoes = array(
+                    1 => $o->getOpcao(1), $o->getOpcao(2), $o->getOpcao(3), $o->getOpcao(4), $o->getOpcao(5)
+                );
 
-                    $p = new Matheus\Models\Perguntas();
+                $p = new Matheus\Models\Perguntas();
 
-                    $perguntas = array(
-                        1 => $p->getPergunta(1), $p->getPergunta(2), $p->getPergunta(3), $p->getPergunta(4)
-                    );
+                $perguntas = array(
+                    1 => $p->getPergunta(1), $p->getPergunta(2), $p->getPergunta(3), $p->getPergunta(4)
+                );
 
-                    $pergunta = 0;
-                    $opcao = 0;
-                    $cq = 1;
-                    $proximaQuestao;
+                $pergunta = 0;
+                $opcao = 0;
+                $cq = 1;
+                $proximaQuestao;
 
-                    foreach ($perguntas as $key => $value) {
+                foreach ($perguntas as $key => $value) {
 
-                        ++$pergunta;
+                    ++$pergunta;
 
-                        echo "
+                    echo "
 
-                        <div id=\"box-question" . $cq . "\" class=\"box-question" . $cq . "\">
-        
-                        <div id=\"questionq" . $cq . "\" class=\"questionq" . $cq++ . "\">
+                        <div id=\"box-question" . $cq . "\" class=\"box-question" . $cq++ . " box-question\">
 
                         <div class=\"q-space\">
 
@@ -207,26 +195,26 @@
 
                         </ul>
 
-                        </div>
-
-                        </div>
-        
-                        " . $btnp . "
                         
-                        </div>";
-                        $opcao = 0;
-                    }
+                        </div>
+                        
+                        </div>
 
-                    ?>
+                        ";
+                    $opcao = 0;
+                }
 
-                    <input type="button" class="btnv" id="btnv">
+                ?>
 
-                </div>
+                <input type="button" class="btnv" id="btnv">
+                <input type="button" class="btnp" id="btnp">
+
+
 
                 <input class="form-submit" type="submit" value="Enviar Pesquisa">
 
 
-                <div class="div-of-form -s">.</div>
+                <div class="div-of-form">.</div>
 
                 <a href="../index.php" class="a-env" value="Adicionar">Deixe também uma sugestão crítica</a>
 

@@ -1,3 +1,157 @@
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
+.pag-banner{
+    background-color: aqua;
+    height: 400px;
+}
+.banner{
+    width: 100%;
+    height: 100%;
+}
+
+.pag-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-title{
+    font-family: "Montserrat";
+    color: #730077;
+    font-size: 30px;
+    position: relative;
+    margin: 80px 0 50px 0;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.box-question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: visible;
+    position: relative;
+}
+.btnp{
+    visibility: hidden;
+}
+.btnv{
+    visibility: hidden;
+}
+ul{list-style-type:none}
+
+.form-pergunta{
+    
+    font-family: "Montserrat";
+    color:#730077;
+    font-size: 20px;
+}
+
+.q-space{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 50px 15px 0 15px;
+
+}
+
+.r-space{
+    margin-top: 50px; 
+}
+
+.question-radios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    margin: 0 0 50px 0;
+    padding: 0;
+  }
+  
+  .question-radios:after {
+    content: "";
+    clear: both;
+  }
+
+  .payment-method {
+    display: flex;
+    background-color: rgb(52, 173, 0);
+    height: 45px;
+    width: 350px;
+    border-radius: 70px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0 15px 0;
+  }
+  .payment-method:hover{
+    background-color: #730077;
+  }
+  .span-of-option{
+      position: relative;
+      left: -3px;
+  }
+  .payment-method + .payment-method {
+    margin-left: 10px;
+  }
+  .payment-method label {
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    position: absolute;
+    text-indent: 100%;
+    white-space: nowrap;
+    height: 45px;
+    width: 350px;
+    border-radius: 80px;
+    
+  }
+  .payment-method input:checked + label{
+    border: 4px solid #730077;
+  }
+  .radio-teste{
+      width: 0;
+      height: 0;
+      position: relative;
+      left: -10px;
+  }
+
+  .box-question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    visibility: visible;
+    position: relative;
+    background-color: orange;
+    margin: 10px 0 50px 0;
+    border-radius:20px;
+}
+
+
+
+@media (min-width: 790px){
 html, body{
     height: 100%;
     margin: 0;
@@ -7,11 +161,9 @@ html, body{
     display: flex;
     flex-direction: column;
 }
-
-
 .pag-banner{
     background-color: aqua;
-    height: 50%;
+    height: 45%;
 }
 
 .banner{
@@ -20,326 +172,47 @@ html, body{
 }
 
 .pag-info{
-    height: 60%;
-}
-
-.form-submit:hover{
-    color: #fff;
-    background-color: #185029;
-    
-}
-
-.box-home{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 5% 0 5% 0;
-}
-.env-sug{
-    border-radius: 50px;
-    background-color: #44554900;
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    height: 40px;
-    align-items: center;
-}
-
-.form-submit{
-    border-radius: 50px;
-    background-color: #b4b4b4;
-    display: flex;
-    justify-content: center;
-    width: 60%;
-    height: 40px;
-    border: none;
-    color: #636363;
-    margin-top: 0;
-    font-family: "Montserrat";
-    position: absolute;
-    top: 85%;
-}
-.form-submit:hover{
-    color: #fff;
-    background-color: #730077;
-    
-}
-
-.link-pesquisa{
-    display:flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 0;
-    height: 10px;
-    position: relative;
-    top: -10px
-}
-
-.env-env{
+    height: 55%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center; 
-    width: 88%;
-   
-}
-.link-legend{
-    font-family: "Montserrat";
-    color:#730077;
-    font-size: 20px;
-}
-
-.e-env-env{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 20%;
-}
-
-.env-sug{
-    border-radius: 50px;
-    background-color: #1d272000;
-    display: flex;
     justify-content: center;
-    width: 100%;
-    height: 40px;
     align-items: center;
 }
-.a-env{
-    color: #730077;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-    background-image: none;
-    border: none;
-    width: 100%;
-    height: 6%;
-    font-family: "Montserrat";
-    line-height: 40px;
-    position: relative;
-    top: 5%;
-}
 
-.form-textarea{
-    height: 150px;
-    width: 100%;
-    margin: 3%;
-}
 .form-title{
     font-family: "Montserrat";
     color: #730077;
     font-size: 30px;
-    margin: 2% 0 2% 0;
-    position: absolute;
+    position: fixed;
+    top: 45%;
 }
 
-.questions{
+.form-container{
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    height: 50%;
-    position: relative;
-    top: 15%;
-}
-
-
-.box-questions{
-    margin: none;
-    display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    color: white;
-    font-family: "Montserrat";
-    background-color: orange;
+    width: 100%;
+    height: 100%;
 }
 
-.form-question{
+.box-question{
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    height: 92%;
-    width: 100%;
-    background-color: white;
-}
-
-.q-space{
-    width: 100%;
-    height: 50%;
-    position: relative;
-    top:-5%;
-}
-.r-space{
-    width: 100%;
-    height: 50%;
-}
-
-.box-question1{
-    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     visibility: visible;
     position: relative;
-    top: 42%;
 }
 
-.box-question2{
+.q-space{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content:center;
+    align-content: center;
     width: 100%;
-    position: relative;
-    top: 18%;
-}
-.box-question3{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    top: -8%;
-}
-
-.box-question4{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    top: -34.5%;
-}
-
-
-.questionq1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 0 4% 0;
-    height: 222%;
-}
-
-.questionq2{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin: 0 0 4% 0;
-    height: 222%;
-}
-
-.questionq3{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin: 0 0 4% 0;
-    width: 89%;
-    height: 183%;
-}
-.questionq4{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin: 0 0 4% 0;
-    height: 222%;
-}
-
-
-.position-q{
     position: fixed;
-    border: 1px solid red;
-    width: 730px;
-    height: 130px;
+    top:58%;
 }
-
-.position-btnp{
-
-}
-
-.position-btnv{
-
-}
-
-.btnp{
-    height: 20%;
-    margin-left: 5%;
-    background-color: rgba(255, 166, 0, 0);
-    border: none;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background-image: url(../img/proximo-p.png) !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #18502900;
-    position: absolute;
-    top: 45%;
-    right: -9%;
-}
-.btnp:hover{
-    height: 20%;
-    margin-left: 5%;
-    background-color: rgba(255, 166, 0, 0);
-    border: none;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background-image: url(../img/proximo-hover.png) !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #18502900;
-    position: absolute;
-    top: 45%;
-    right: -9%;
-}
-
-.btnv{
-    height: 20%;
-    margin-left: 5%;
-    background-color: rgba(255, 166, 0, 0);
-    border: none;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background-image: url(../img/anterior-p.png) !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #18502900;
-    position: absolute;
-    top: 45%;
-    left: -14%;
-}
-
-.btnv:hover{
-    height: 20%;
-    margin-left: 5%;
-    background-color: rgba(255, 166, 0, 0);
-    border: none;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background-image: url(../img/anterior-hover.png) !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #18502900;
-    position: absolute;
-    top: 45%;
-    left: -14%;
-}
-
-
 
 .form-pergunta{
     font-family: "Montserrat";
@@ -347,27 +220,15 @@ html, body{
     font-size: 20px;
     margin: 0 0 3% 0;
 }
-.div-of-form{
-    color: #e1e1e1;
-    height: 1px;
-    font-size: 1px;
-    width: 60%;
-    background-color: #e1e1e1;
-    margin: 0 0 0% 0;
-    position: relative;
-    top: 21%;
-}
 
-.-p{
-    margin: 0 0 3% 0;
-}
-
-.-s{
-    margin: 3% 0 6% 0;
+.r-space{
+    position: fixed;
+    top: 65%;
 }
 
 .question-radios {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -381,7 +242,7 @@ html, body{
     content: "";
     clear: both;
   }
-  
+
   .payment-method {
     display: flex;
     background-color: rgb(52, 173, 0);
@@ -396,22 +257,16 @@ html, body{
     font-size: 14px;
     font-weight: bold;
   }
-
-  
-
   .payment-method:hover{
     background-color: #730077;
   }
-
   .span-of-option{
       position: relative;
       left: -3px;
   }
-
   .payment-method + .payment-method {
     margin-left: 10px;
   }
-
   .payment-method label {
     cursor: pointer;
     display: block;
@@ -424,15 +279,100 @@ html, body{
     border-radius: 80px;
     
   }
-
-
   .payment-method input:checked + label{
     border: 4px solid #730077;
   }
-
   .radio-teste{
       width: 0;
       height: 0;
       position: relative;
       left: -10px;
   }
+  .btnv{
+    height: 20%;
+    background-color: rgba(255, 166, 0, 0);
+    border: none;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/anterior-p.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #18502900;
+    position: absolute;
+    top: 62%;
+    left: 10%;
+}
+
+.btnv:hover{
+    background-image: url(../img/anterior-hover.png) !important;
+}
+
+.btnp{
+    height: 20%;
+    background-color: rgba(255, 166, 0, 0);
+    border: none;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/proximo-p.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #18502900;
+    position: absolute;
+    top: 62%;
+    right: 10%;
+}
+.btnp:hover{
+    background-image: url(../img/proximo-hover.png) !important;
+}
+
+.form-submit{
+    border-radius: 50px;
+    background-color: #b4b4b4;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 40px;
+    border: none;
+    color: #636363;
+    margin-top: 0;
+    font-family: "Montserrat";
+    position: relative;
+    top: 60%
+}
+.form-submit:hover{
+    color: #fff;
+    background-color: #730077;
+}
+
+.div-of-form{
+    color: #e1e1e1;
+    height: 1px;
+    font-size: 1px;
+    width: 60%;
+    background-color: #e1e1e1;
+    margin: 0 0 0% 0;
+    position: relative;
+    top: 70%;
+}
+
+.a-env{
+    color: #730077;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    background-image: none;
+    border: none;
+    width: 100%;
+    height: 6%;
+    font-family: "Montserrat";
+    line-height: 40px;
+    position: relative;
+    top: 77%;
+}
+
+}
+

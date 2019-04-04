@@ -117,7 +117,7 @@
                             <a href="#">Dashboard</a>
                         </li> 
                     -->
-                    <li class="breadcrumb-item active">Aval Central/
+                    <li class="breadcrumb-item active">Aval Central /
                         De 
                         <?php 
                                 require '../vendor/autoload.php';
@@ -125,7 +125,9 @@
                                 $datalt = $_GET["data-limite"];
 
                                 if (isset($datait)&&isset($datalt)) {
-                                    echo "$datait até $datalt";
+                                    $dt_inicio = implode('/', array_reverse(explode('-', $datait)));
+                                    $dt_limite = implode('/', array_reverse(explode('-', $datalt)));
+                                    echo "$dt_inicio até $dt_limite";
                                 } 
                                 
                                 else {
@@ -140,7 +142,10 @@
 
                                     $datamin = $dmin->min;
 
-                                    echo "$datamin até $datamax";
+                                    $dt_min = implode('/', array_reverse(explode('-', $datamin)));
+                                    $dt_max = implode('/', array_reverse(explode('-', $datamax)));
+
+                                    echo "$dt_min até $dt_max";
                                 }
                         ?>
                     </li>
@@ -238,7 +243,7 @@
                 data: {
                     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
                     datasets: [{
-                        label: '# of Votes',
+                        label: '',
                         data: [" . $qArray[1] . "," . $qArray[2] . "," . $qArray[3] . "," . $qArray[4] . ", 0, 5],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
