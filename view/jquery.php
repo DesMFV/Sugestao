@@ -13,25 +13,31 @@
     <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
+        var valorgeral;
+
+
+
         $(document).ready(
             function() {
-
-                if (window.matchMedia('min-width: 769px').matches) {
+                if (window.innerWidth >= 900) {
                     $("#btnp").css("visibility", "hidden");
                     $("#btnv").css("visibility", "hidden");
                     $(".form-submit").css("visibility", "hidden");
+                    $("#box-question1").css("visibility", "visible");
                     $("#box-question2").css("visibility", "hidden");
                     $("#box-question3").css("visibility", "hidden");
                     $("#box-question4").css("visibility", "hidden");
-                }
+                } 
             }
         );
 
-
         $(function() {
-            if (window.matchMedia('min-width: 769px').matches) {
-                var valorbtn = 0;
-                var checked = 0;
+
+            var valorbtn = 0;
+            var checked = 0;
+
+            if (window.innerWidth >= 900) {
+
                 $("#btnp").click(function() {
                         if (valorbtn == 0) {
                             valorbtn = 1;
@@ -50,66 +56,94 @@
                             valorbtn++;
                             $("#box-question" + valorbtn).css("visibility", "visible");
                             $(".form-submit").css("visibility", "visible");
-                        }
-                    }
-                }
-            });
-
-        $(".radio-teste").click(function() {
-
-            if (window.matchMedia('min-width: 769px').matches) {
-
-                if (checked != 4) {
-                    window.setTimeout(function radioProxima() {
-                        if (valorbtn == 0) {
+                        } else {
                             valorbtn = 1;
                             $("#box-question" + valorbtn).css("visibility", "hidden");
+                            $("#btnp").css("visibility", "visible");
                             valorbtn++;
                             $("#box-question" + valorbtn).css("visibility", "visible");
-                            checked = 1;
-                        } else if (valorbtn < 3) {
-                            $("#box-question" + valorbtn).css("visibility", "hidden");
-                            valorbtn++;
-                            $("#box-question" + valorbtn).css("visibility", "visible");
-                            checked++;
-                        } else if (valorbtn == 3) {
-                            $("#btnp").css("visibility", "hidden");
-                            $("#box-question" + valorbtn).css("visibility", "hidden");
-                            valorbtn++;
-                            $("#box-question" + valorbtn).css("visibility", "visible");
-                            checked++;
-                        } else {
-                            $(".form-submit").css("visibility", "visible");
-                            checked++;
                             $("#btnv").css("visibility", "visible");
                         }
-                    }, 560);
+                    }
+                );
                 }
-            }
+
+        })
+        $(function() {
+
+            var checked;
+            var valorbtn = 1;
+
+            $(".radio-teste").click(function() {
+
+                if (window.innerWidth >= 900) {
+
+                    if (checked != 4) {
+                        window.setTimeout(function radioProxima() {
+                            if (valorbtn == 1) {
+                                $("#box-question" + valorbtn).css("visibility", "hidden");
+                                valorbtn++;
+                                $("#box-question" + valorbtn).css("visibility", "visible");
+                                checked = 1;
+                            } else if (valorbtn < 3) {
+                                $("#box-question" + valorbtn).css("visibility", "hidden");
+                                valorbtn++;
+                                $("#box-question" + valorbtn).css("visibility", "visible");
+                                checked++;
+                            } else if (valorbtn == 3) {
+                                $("#btnp").css("visibility", "hidden");
+                                $("#box-question" + valorbtn).css("visibility", "hidden");
+                                valorbtn++;
+                                $("#box-question" + valorbtn).css("visibility", "visible");
+                                checked++;
+                                valorgeral = valorbtn;
+                            } else {
+                                $(".form-submit").css("visibility", "visible");
+                                checked++;
+                                $("#btnv").css("visibility", "visible");
+                            }
+                        }, 560);
+                    }
+                }
+
+            });
         });
 
-        $("#btnv").click(function() {
-            if (window.matchMedia('min-width: 769px').matches) {
-                if (valorbtn == 2) {
-                    $("#box-question" + valorbtn).css("visibility", "hidden");
-                    valorbtn--;
-                    $("#box-question" + valorbtn).css("visibility", "visible");
-                    $("#btnv").css("visibility", "hidden");
-                    $("#btnp").css("visibility", "visible");
-                    $(".form-submit").css("visibility", "hidden");
-                    valorbtn--;
-                } else {
-                    $("#box-question" + valorbtn).css("visibility", "hidden");
-                    valorbtn--;
-                    $("#box-question" + valorbtn).css("visibility", "visible");
-                    $("#btnv").css("visibility", "visible");
-                    $("#btnp").css("visibility", "visible");
-                    $(".form-submit").css("visibility", "hidden");
+
+
+
+        $(function() {
+            $("#btnv").click(function() {
+
+                if (window.innerWidth >= 900) {
+
+                    if (valorgeral == 4) {
+                        $("#box-question" + valorgeral).css("visibility", "hidden");
+                        valorgeral--;
+                        $("#box-question" + valorgeral).css("visibility", "visible");
+                        $("#btnp").css("visibility", "visible");
+                        $(".form-submit").css("visibility", "hidden");
+                    } else if (valorgeral == 0) {
+                        valorgeral--;
+                        $("#btnv").css("visibility", "hidden");
+                        valorgeral = 4;
+                    } else if (valorgeral == 2) {
+                        $("#box-question" + valorgeral).css("visibility", "hidden");
+                        valorgeral--;
+                        $("#box-question" + valorgeral).css("visibility", "visible");
+                        $("#btnv").css("visibility", "hidden");
+                        valorgeral = 4;
+                    } else {
+                        $("#box-question" + valorgeral).css("visibility", "hidden");
+                        valorgeral--;
+                        $("#box-question" + valorgeral).css("visibility", "visible");
+                    }
+
                 }
-            }
-        });
+            })
         });
     </script>
+
 
 </head>
 
