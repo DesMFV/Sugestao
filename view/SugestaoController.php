@@ -17,10 +17,10 @@ if($acao) {
 
         case 'enviarpesquisa':
 
-            $rq1 = $_POST["radio_respostaq1"];
-            $rq2 = $_POST["radio_respostaq2"];
-            $rq3 = $_POST["radio_respostaq3"];
-            $rq4 = $_POST["radio_respostaq4"];
+            $rq1 = $_POST["1"];
+            $rq2 = $_POST["2"];
+            $rq3 = $_POST["3"];
+            $rq4 = $_POST["4"];
 
             $respostas = new Matheus\Models\Respostas();
 
