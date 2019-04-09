@@ -267,8 +267,6 @@
                             $("#btnv").css("visibility", "hidden");
                             $("#btnp").css("visibility", "hidden");
 
-                            
-
                             $(".radio-teste").click(function() {
                                 // variável para saber qual questão foi respondida
                                 vchecked = parseInt($(this).attr('name'));
