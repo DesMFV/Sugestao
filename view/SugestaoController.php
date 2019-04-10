@@ -118,6 +118,32 @@ if($acao) {
             }
 
         break;
+
+        case 'mail':
+
+            $assunto = $_GET['assunto'];
+            $sugestao = $_GET['sugestao'];
+            $nome = $_GET['nome'];
+            $emial = $_GET['email'];
+
+            $filtro = $_GET['filtro'];
+
+            
+
+            $objEx = new Matheus\Models\Sugestao();
+
+            $objEx->tornarResgatado($id,$arq);
+
+            if(isset($_GET['texto-pesquisa'])){
+                $tp = $_GET['texto-pesquisa'];
+                header('Location: view/'.$origem.'.php'.'?texto-pesquisa='.$tp);
+            }
+
+            else{
+                header('Location: view/'.$origem.'.php'.'?filtro='.$filtro);
+            }
+
+        break;
     }
 } else {
     include 'view/formulario.php';

@@ -4,7 +4,7 @@ html, body{
 }
 .pag-banner{
     background-color: aqua;
-    height: 400px;
+    height: 200px;
 }
 .banner{
     width: 100%;
@@ -208,6 +208,7 @@ html, body{
     height: 45%;
 }
 
+
 .banner{
     width: 100%;
     height: 100%;
@@ -402,7 +403,7 @@ html, body{
     background-color: #e1e1e1;
     margin: 0 0 0% 0;
     position: relative;
-    top: 70%;
+    top: 65%;
 }
 
 .a-env{
@@ -413,10 +414,10 @@ html, body{
     background-image: none;
     border: none;
     width: 100%;
-    height: 6%;
+    height: 0%;
     font-family: "Montserrat";
     line-height: 40px;
     position: relative;
-    top: 77%;
+    top: 61%;
 }
 }

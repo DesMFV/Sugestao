@@ -18,14 +18,31 @@
     <title>SB Admin - Tables</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(
+            function() {
+
+                $(".windownMail").css("visibility", "hidden");
+
+                $("#mail-1").click(function() {
+                    $("#windownMail-1").css("visibility", "visible");
+                });
+                $("#mail-2").click(function() {
+                    $("#windownMail-2").css("visibility", "visible");
+                });
+
+            }
+        );
+    </script>
 
 </head>
 
@@ -146,11 +163,9 @@
 
                         <?php
 
-                        if(isset($_GET["texto-pesquisa"])) { 
+                        if (isset($_GET["texto-pesquisa"])) {
                             echo "<a href=\"admin.php\">Sair da pesquisa</a>";
-                        } 
-
-                        else {
+                        } else {
 
                             $selecionado = $_GET["filtro"];
 
@@ -247,24 +262,23 @@
 
                                                 //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
 
-                                                
 
 
-                                                if($linha->imagem != "Nenhum anexo adicionado"){
+
+                                                if ($linha->imagem != "Nenhum anexo adicionado") {
                                                     $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
                                                     </td>";
-                                                }
-                                                else{
+                                                } else {
                                                     $ie = "<td>{$img}</td>";
                                                 }
 
-                                            echo "<tr>
+                                                echo "<tr>
                                             <td>{$id}</td>
                                             <td>{$a}</td>
                                             <td>{$s}</td>
                                             <td>{$n}</td>
                                             <td>{$e}</td>
-                                            ".$ie."
+                                            " . $ie . "
     
                                                     <td class=\"td-ex-tb\">
     
@@ -274,7 +288,6 @@
     
                                                     </td>
                                                     </tr> ";
-
                                             } else if ($linha->excluido == 't' && $linha->arquivado == 'f') {
 
                                                 $id = $linha->id;
@@ -302,7 +315,7 @@
     
                                                     </td>
                                                     </tr> ";
-                                            } else if($linha->excluido == 'f' && $linha->arquivado == 'f'){
+                                            } else if ($linha->excluido == 'f' && $linha->arquivado == 'f') {
 
                                                 $id = $linha->id;
                                                 $a = $linha->assunto;
@@ -345,39 +358,46 @@
 
                                     else {
 
-                                            $sug = new Matheus\Models\Sugestao();
+                                        $sug = new Matheus\Models\Sugestao();
 
-                                            $filtro  = isset($_GET["filtro"]) ? $_GET["filtro"] : $_GET["filtro"] = 'Entrada';
+                                        $filtro  = isset($_GET["filtro"]) ? $_GET["filtro"] : $_GET["filtro"] = 'Entrada';
 
-                                            $resultado = $sug->listaFiltro($filtro);
+                                        $resultado = $sug->listaFiltro($filtro);
 
-                                            while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
-                                                // Escreve na página o retorno para cada registro trazido pela query
+                                        $indice = 1;
 
-                                                if ($filtro == 'Arquivadas') {
+                                        while ($linha = pg_fetch_object($resultado)) { //aqui troquei para arrays, este loop declara a variavel $linha (ela representa o resultado da query), e o loop lê linha a linha do retorno
+                                            // Escreve na página o retorno para cada registro trazido pela query
 
-                                                    $arquivado = $linha->arquivado;
+                                            if ($filtro == 'Arquivadas') {
 
-                                                    $id = $linha->id;
-                                                    $a = $linha->assunto;
-                                                    $s = $linha->sugestao;
-                                                    $n = $linha->nome_pessoa;
-                                                    $e = $linha->email;
-                                                    $i = '../' . $linha->imagem;
-                                                    $img = $linha->imagem;
+                                                $arquivado = $linha->arquivado;
 
-                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+                                                $img = $linha->imagem;
 
-                                                    
+                                                //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
 
-
-                                                    if($linha->imagem != "Nenhum anexo adicionado"){
-                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                                                if ($linha->imagem != "Nenhum anexo adicionado") {
+                                                    $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
                                                         </td>";
-                                                    }
-                                                    else{
-                                                        $ie = "<td>{$img}</td>";
-                                                    }
+                                                    $iw = "<img class=\"img-wform\" src=\"{$i}\">";
+                                                    $iwt = "";
+                                                } else {
+                                                    $ie = "<td>{$img}</td>";
+                                                    $iwt = "Nehum anexo adicionado";
+                                                }
+
+                                                $sugestoes = array($indice => $s);
+                                                $nomes = array($indice => $n); 
+                                                $email = array($indice => $e);
+                                                $images = array($indice => $iw);
+                                                $imageTexts = array($indice => $iwt);
 
                                                 echo "<tr>
                                                 <td>{$id}</td>
@@ -385,7 +405,9 @@
                                                 <td>{$s}</td>
                                                 <td>{$n}</td>
                                                 <td>{$e}</td>
-                                                ".$ie."
+                                                " . $ie . "
+
+                                                
 
                                                 <td class=\"td-ex-tb\">
 
@@ -393,99 +415,116 @@
                    
                                                     </a>
 
-                                                </td>
-                                                </tr> ";
-                                                } else if ($filtro == 'Excluidas') {
-
-                                                    $id = $linha->id;
-                                                    $a = $linha->assunto;
-                                                    $s = $linha->sugestao;
-                                                    $n = $linha->nome_pessoa;
-                                                    $e = $linha->email;
-                                                    $i = '../' . $linha->imagem;
-                                                    $img = $linha->imagem;
-
-                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
-
-                                                    
-
-
-                                                    if($linha->imagem != "Nenhum anexo adicionado"){
-                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                        </td>";
-                                                    }
-                                                    else{
-                                                        $ie = "<td>{$img}</td>";
-                                                    }
-
-                                                echo "<tr>
-                                                <td>{$id}</td>
-                                                <td>{$a}</td>
-                                                <td>{$s}</td>
-                                                <td>{$n}</td>
-                                                <td>{$e}</td>
-                                                ".$ie."
-
-                                                <td class=\"td-ex-tb\">
-
-                                                    <a class=\"a-acao -r\" href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&origem=admin&filtro=Excluidas\">
-                    
-                                                    </a>
-
-                                                </td>
-                                                </tr> ";
-                                                } else {
-                                                    $id = $linha->id;
-                                                    $a = $linha->assunto;
-                                                    $s = $linha->sugestao;
-                                                    $n = $linha->nome_pessoa;
-                                                    $e = $linha->email;
-                                                    $i = '../' . $linha->imagem;
-                                                    $img = $linha->imagem;
-
-                                                    //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
-
-                                                    
-
-
-                                                    if($linha->imagem != "Nenhum anexo adicionado"){
-                                                        $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
-                                                        </td>";
-                                                    }
-                                                    else{
-                                                        $ie = "<td>{$img}</td>";
-                                                    }
-
-                                                echo "<tr>
-                                                <td>{$id}</td>
-                                                <td>{$a}</td>
-                                                <td>{$s}</td>
-                                                <td>{$n}</td>
-                                                <td>{$e}</td>
-                                                ".$ie."
-
-                                                  <td class=\"td-ex-tb\">
-
-                                                        <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=admin&filtro=Entrada\">
+                                                    <a class=\"email\" id=\"mail-{$indice}\" value=\"Encaminhar\" action=\"admin.php?filtro=Arquivadas&count={$indice}\"></a>
                                                        
-                                                        </a>
-
-                                                        <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin&filtro=Entrada\">
+                                                    <div id=\"windownMail-{$indice}\" class=\"windownMail\">
                                                         
-                                                        </a>
+                                                            <form class=\"windown-form\" method=\"POST\" action=\"../index.php?pagina=SugestaoController&acao=mail&destino=obrigado\" enctype=\"multipart/form-data\">
+                                                                <div class=\"wform-head\">
+                                                                    <label class=\"wform-title\">Encaminhar Sugestão</label>
+                                                                </div>
+                                                                <label class=\"label-mail-1\">Destinatário</label>
+                                                                <input type=\"email\" class=\"item-wform\" name=\"destinatatrio\" placeholder=\"Digite o destinatário\">
+                                                                <label class=\"label-mail-2\">Sugestão</label>
+                                                                <textarea class=\"wform-textarea\" type=\"text\" name=\"txtSugestao\" required>".$s."</textarea>
+                                                                <div class=\"info-autor\">
+                                                                    <label>Autor da sugestão: ".$nomes[$indice]."</label>
+                                                                    <label>Email do autor: ".$email[$indice]."</label>
+                                                                    <label>Anexo: ".$imageTexts[$indice]."</label>
+                                                                    <div class=\"wspace-img\">
+                                                                    ".$images[$indice]."
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <input class=\"wform-submit\" type=\"submit\" value=\"Encaminhar\">
+                                                            </form>
+                                                        
+                                                    </div>
 
-                                                  </td>
-                                                  </tr> ";
+                                                    </td>
+
+                                                    </tr> 
+                                                    ";
+                                                    $indice++;
+
+                                            } else if ($filtro == 'Excluidas') {
+
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+                                                $img = $linha->imagem;
+
+                                                //$i = $linha->imagem != "Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+
+
+
+                                                if ($linha->imagem != "Nenhum anexo adicionado") {
+                                                    $ie = "<td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                    </td>";
+                                                } else {
+                                                    $ie = "<td>{$img}</td>";
                                                 }
+
+                                                echo "<tr>
+                        <td>{$id}</td>
+                        <td>{$a}</td>
+                        <td>{$s}</td>
+                        <td>{$n}</td>
+                        <td>{$e}</td>
+                        " . $ie . "
+
+                        <td class=\"td-ex-tb\">
+
+                            <a class=\"a-acao -r\" href=\"../index.php?pagina=SugestaoController&acao=resgatar&id={$id}&origem=admin&filtro=Excluidas\"> </a> </td> </tr> ";
+                                            } else {
+                                                $id = $linha->id;
+                                                $a = $linha->assunto;
+                                                $s = $linha->sugestao;
+                                                $n = $linha->nome_pessoa;
+                                                $e = $linha->email;
+                                                $i = '../' . $linha->imagem;
+                                                $img = $linha->imagem;
+
+                                                //$i = $linha->imagem != " Nenhum anexo adicionado"?'../' . $linha->imagem:$linha->imagem;
+
+
+
+
+                                                if ($linha->imagem != "Nenhum anexo adicionado") {
+                                                    $ie = "
+                        <td class=\"td-img-tb\"> <img class=\"img-table\" src=\"{$i}\">
+                        </td>";
+                                                } else {
+                                                    $ie = "<td>{$img}</td>";
+                                                }
+
+                                                echo "
+                    <tr>
+                        <td>{$id}</td>
+                        <td>{$a}</td>
+                        <td>{$s}</td>
+                        <td>{$n}</td>
+                        <td>{$e}</td>
+                        " . $ie . "
+
+                        <td class=\"td-ex-tb\">
+
+                            <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&origem=admin&filtro=Entrada\"> </a> <a class=\"a-acao -a\" href=\"../index.php?pagina=SugestaoController&acao=arquivar&id={$id}&origem=admin&filtro=Entrada\"> </a> </td> </tr> ";
                                             }
                                         }
+                                    }
                                     ?>
 
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <div class=" card-footer small text-muted">Updated yesterday at 11:59 PM
+                    </div>
                 </div>
 
                 <p class="small text-center text-muted my-5">
@@ -533,23 +572,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

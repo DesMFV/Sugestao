@@ -358,7 +358,7 @@
     <div class="pag">
 
         <div class="pag-banner">
-            <img class="banner" src="../img/obrigado-banner.png">
+            <img class="banner" src="../img/P.C.A-banner.jpg">
         </div>
 
         <div class="pag-info">
