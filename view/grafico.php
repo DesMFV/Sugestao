@@ -198,6 +198,7 @@
 ?>
                             </div>
                             <div class="card-body">
+                            <label class="chart-title">Nível de satisfação quanto a:</label>
                                 <div style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
                                     <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
                                         <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
@@ -236,12 +237,13 @@
                         );
                     }
 
+
                         echo "<script>
             var ctx = document.getElementById('myBarChart');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    labels: ['Atendentes', 'Resuloção de problemas/dúvidas', 'Tempo de espera', 'Espaço Físico'],
                     datasets: [{
                         label: '',
                         data: [" . $qArray[1] . "," . $qArray[2] . "," . $qArray[3] . "," . $qArray[4] . ", 0, 5],
@@ -265,6 +267,7 @@
                     }]
                 },
                 options: {
+                    
                     scales: {
                         xAxes: [{
                             barPercentage: 10,

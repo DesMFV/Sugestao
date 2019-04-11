@@ -33,12 +33,28 @@
 
                 $(".windownMail").css("visibility", "hidden");
 
-                $("#mail-1").click(function() {
-                    $("#windownMail-1").css("visibility", "visible");
+                $(".b-acao").click(function() {
+                    var valor = parseInt($(this).attr('name'));
+                    $("#windownMail-" + valor).css("visibility", "visible");
+                    console.log(valor);
+
+                    $("#windown-sair-" + valor).click(function() {
+                        console.log(valor);
+                        $("#windownMail-" + valor).css("visibility", "hidden");
+                    });
+
+                    function sairEsc() {
+                        var tecla = event.keyCode;
+                        if(tecla==27){
+                            $("#windownMail-" + valor).css("visibility", "hidden");
+                        }
+                    }
+
+                    document.addEventListener('keydown', sairEsc);
+
                 });
-                $("#mail-2").click(function() {
-                    $("#windownMail-2").css("visibility", "visible");
-                });
+
+
 
             }
         );
@@ -171,39 +187,43 @@
 
                             if ($selecionado == 'Entrada') {
                                 echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-                            <input type=\"submit\" value=\"Filtrar\">
+                            
                             <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
                                 <option selected=\"selected\" value=\"Entrada\">Entrada</option>
                                 <option value=\"Arquivadas\">Arquivadas</option>
                                 <option value=\"Excluidas\">Excluidas</option>
                             </select>
+                            <input type=\"submit\" value=\"Filtrar\">
                             </form>";
                             } else if ($selecionado == 'Arquivadas') {
                                 echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-                            <input type=\"submit\" value=\"Filtrar\">
+                            
                             <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
                                 <option value=\"Entrada\">Entrada</option>
                                 <option selected=\"selected\" value=\"Arquivadas\">Arquivadas</option>
                                 <option value=\"Excluidas\">Excluidas</option>
+                                
                             </select>
+                            <input type=\"submit\" value=\"Filtrar\">
                             </form>";
                             } else if ($selecionado == 'Excluidas') {
                                 echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-                            <input type=\"submit\" value=\"Filtrar\">
+                            
                             <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
                                 <option value=\"Entrada\">Entrada</option>
                                 <option value=\"Arquivadas\">Arquivadas</option>
                                 <option selected=\"selected\" value=\"Excluidas\">Excluidas</option>
                             </select>
+                            <input type=\"submit\" value=\"Filtrar\">
                             </form>";
                             } else {
                                 echo "<form class=\"form-header-filter\" action=\"\" mathod=\"get\">
-                            <input type=\"submit\" value=\"Filtrar\">
                             <select class=\"select-filter\" id=\"asdf\" name=\"filtro\" requrired>
                                 <option selected=\"selected\" value=\"Entrada\">Entrada</option>
                                 <option value=\"Arquivadas\">Arquivadas</option>
                                 <option value=\"Excluidas\">Excluidas</option>
                             </select>
+                            <input type=\"submit\" value=\"Filtrar\">
                             </form>";
                             }
                         }
@@ -391,12 +411,16 @@
                                                 } else {
                                                     $ie = "<td>{$img}</td>";
                                                     $iwt = "Nehum anexo adicionado";
+                                                    $iw = "";
                                                 }
 
                                                 $sugestoes = array($indice => $s);
-                                                $nomes = array($indice => $n); 
+                                                $nomes = array($indice => $n);
                                                 $email = array($indice => $e);
+
                                                 $images = array($indice => $iw);
+
+
                                                 $imageTexts = array($indice => $iwt);
 
                                                 echo "<tr>
@@ -406,36 +430,47 @@
                                                 <td>{$n}</td>
                                                 <td>{$e}</td>
                                                 " . $ie . "
-
-                                                
-
                                                 <td class=\"td-ex-tb\">
 
                                                     <a class=\"a-acao -e\" href=\"../index.php?pagina=SugestaoController&acao=excluir&id={$id}&arq={$arquivado}&origem=admin&filtro=Arquivadas\">
                    
                                                     </a>
 
-                                                    <a class=\"email\" id=\"mail-{$indice}\" value=\"Encaminhar\" action=\"admin.php?filtro=Arquivadas&count={$indice}\"></a>
+                                                    <input type=\"button\" class=\"b-acao -email\" id=\"mail-{$indice}\" name=\"{$indice}\" action=\"admin.php?filtro=Arquivadas\"></a>
                                                        
                                                     <div id=\"windownMail-{$indice}\" class=\"windownMail\">
+
+                                                    <input Type=\"button\" value=\"x\" id=\"windown-sair-{$indice}\" class=\"windown-sair\">
+
+                                                            <form class=\"windown-form\" method=\"POST\" action=\"../index.php?pagina=SugestaoController&autor=autor&acao=mail&destino=obrigado\" enctype=\"multipart/form-data\">
                                                         
-                                                            <form class=\"windown-form\" method=\"POST\" action=\"../index.php?pagina=SugestaoController&acao=mail&destino=obrigado\" enctype=\"multipart/form-data\">
-                                                                <div class=\"wform-head\">
+                                                            <div class=\"wform-head\">
                                                                     <label class=\"wform-title\">Encaminhar Sugestão</label>
                                                                 </div>
+
                                                                 <label class=\"label-mail-1\">Destinatário</label>
-                                                                <input type=\"email\" class=\"item-wform\" name=\"destinatatrio\" placeholder=\"Digite o destinatário\">
+
+                                                                <select class=\"item-wform\" id=\"asdf\" name=\"destinatario\" requrired>
+                                                                    <option value=\"proen@urcamp.edu.br\">PROEN</option>
+                                                                    <option value=\"proad@urcamp.edu.br\">PROAD</option>
+                                                                </select>
+
+                                                                
                                                                 <label class=\"label-mail-2\">Sugestão</label>
-                                                                <textarea class=\"wform-textarea\" type=\"text\" name=\"txtSugestao\" required>".$s."</textarea>
+
+                                                                <textarea class=\"wform-textarea\" type=\"text\" name=\"txtSugestao\" required>" . $s . "</textarea>
+                                                                
                                                                 <div class=\"info-autor\">
-                                                                    <label>Autor da sugestão: ".$nomes[$indice]."</label>
-                                                                    <label>Email do autor: ".$email[$indice]."</label>
-                                                                    <label>Anexo: ".$imageTexts[$indice]."</label>
-                                                                    <div class=\"wspace-img\">
-                                                                    ".$images[$indice]."
+                                                                    <label name=\"autor\" value=\"Autor da sugestao\">Autor da sugestão: " . $nomes[$indice] . "</label>
+                                                                    <label name=\"\">Email do autor: " . $email[$indice] . "</label>
+                                                                    <label name=\"\">Anexo: " . $imageTexts[$indice] . "</label>
+                                                                    <div name=\"\" class=\"wspace-img\">
+                                                                    " . $images[$indice] . "
                                                                     </div>
-                                                                    
                                                                 </div>
+
+                                                                <input type=\"text\" class=\"sendID\" name=\"id\" value=\"{$id}\">
+
                                                                 <input class=\"wform-submit\" type=\"submit\" value=\"Encaminhar\">
                                                             </form>
                                                         
@@ -445,8 +480,7 @@
 
                                                     </tr> 
                                                     ";
-                                                    $indice++;
-
+                                                $indice++;
                                             } else if ($filtro == 'Excluidas') {
 
                                                 $id = $linha->id;

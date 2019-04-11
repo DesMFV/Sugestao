@@ -17,7 +17,7 @@
         var valorbtnsalvo;
         var valorcheckedsalvo = 0;
         var visibility;
-        var vchecked;
+        var reloadchecked;
         var questoesRespondidas = 0;
 
         //============================================= recarga da página =============================================
@@ -72,7 +72,9 @@
                 var checked = 1;
                 var valorbtn = 1;
                 $(".radio-teste").click(function() {
+
                     if (window.innerWidth >= 900) {
+
 
                         if (checked < 5) {
 
@@ -109,7 +111,7 @@
                             valorbtn++;
                             valorbtnsalvo = valorbtn;
                             checked++;
-                            valorcheckedsalvo = checked;
+                            reloadchecked = checked;
                         }
                     }
                 });
@@ -148,6 +150,7 @@
                     function() {
 
                         //inicia todos como invisíveis
+                        
                         $("#btnp").css("visibility", "hidden");
                         $("#btnv").css("visibility", "hidden");
                         $(".form-submit").css("visibility", "hidden");
@@ -155,40 +158,78 @@
                         $("#box-question2").css("visibility", "hidden");
                         $("#box-question3").css("visibility", "hidden");
                         $("#box-question4").css("visibility", "hidden");
+                        
 
                         // teste a próxima questão se a resolução for desktop
                         if (window.innerWidth > 899) {
-                            var visao = vchecked + 1;
-                            $("#box-question" + visao).css("visibility", "visible");
+
+                            var visao = reloadchecked;
+
+                            if (visao == 2) {
+                                $("#box-question1").css("visibility", "hidden");
+                                $("#box-question2").css("visibility", "visible");
+                                visao = 1;
+                            } else if (visao == 3) {
+                                $("#box-question1").css("visibility", "hidden");
+                                $("#box-question2").css("visibility", "hidden");
+                                $("#box-question3").css("visibility", "visible");
+                                visao = 2;
+                            } else if (visao == 4) {
+                                $("#box-question1").css("visibility", "hidden");
+                                $("#box-question2").css("visibility", "hidden");
+                                $("#box-question3").css("visibility", "hidden");
+                                $("#box-question4").css("visibility", "visible");
+                                visao = 3;
+                            } else if(visao == 5){
+                                $("#box-question1").css("visibility", "hidden");
+                                $("#box-question2").css("visibility", "hidden");
+                                $("#box-question3").css("visibility", "hidden");
+                                $("#box-question4").css("visibility", "visible");
+                                $("#btnv").css("visibility", "visible");
+                                $(".form-submit").css("visibility", "visible");
+                            }
+                            else{
+                                $("#box-question1").css("visibility", "visible");
+                            }
+
 
                             $(".radio-teste").click(function() {
                                 if (window.innerWidth >= 900) {
 
                                     window.setTimeout(function radioProxima() {
+
                                         if (visao == 1 && questoesRespondidas == 0) {
-                                            $("#box-question" + checked).css("visibility", "hidden");
+                                            $("#box-question1").css("visibility", "hidden");
                                             visao++;
                                             valorbtnsalvo = valorbtn;
-                                            $("#box-question" + visao).css("visibility", "visible");
+                                            $("#box-question2").css("visibility", "visible");
                                             valorcheckedsalvo = visao;
+
                                         } else if (visao < 3 && questoesRespondidas == 0) {
-                                            $("#box-question" + visao).css("visibility", "hidden");
+
+                                            $("#box-question" + checked).css("visibility", "hidden");
                                             visao++;
                                             $("#box-question" + visao).css("visibility", "visible");
                                             valorcheckedsalvo = checked;
+
                                         } else if (visao == 3 && questoesRespondidas == 0) {
+
                                             $("#btnp").css("visibility", "hidden");
-                                            $("#box-question" + visao).css("visibility", "hidden");
+                                            $("#box-question" + checked).css("visibility", "hidden");
                                             visao++;
-                                            $("#box-question" + visao).css("visibility", "visible");
+                                            $("#box-question" + checked).css("visibility", "visible");
                                             valorcheckedsalvo = checked;
                                             valorgeral = valorbtn;
+
                                         } else if (visao == 4 && questoesRespondidas == 0) {
+
                                             $(".form-submit").css("visibility", "visible");
                                             questoesRespondidas = 1;
                                             valorcheckedsalvo = checked;
                                             $("#btnv").css("visibility", "visible");
+
                                         }
+
                                     }, 560);
                                 }
                             });
@@ -224,29 +265,29 @@
 
                             $("#btnv").click(function() {
                                 if (window.innerWidth >= 900) {
-                                    if (vchecked == 4) {
-                                        $("#box-question" + vchecked).css("visibility", "hidden");
-                                        vchecked--;
-                                        $("#box-question" + vchecked).css("visibility", "visible");
+                                    if (visao == 4) {
+                                        $("#box-question" + visao).css("visibility", "hidden");
+                                        visao--;
+                                        $("#box-question" + visao).css("visibility", "visible");
                                         $("#btnp").css("visibility", "visible");
                                         $(".form-submit").css("visibility", "hidden");
-                                        console.log(vchecked);
-                                    } else if (vchecked == 0) {
-                                        vchecked--;
+                                        console.log(visao);
+                                    } else if (visao == 0) {
+                                        visao--;
                                         $("#btnv").css("visibility", "hidden");
-                                        vchecked = 4;
-                                    } else if (vchecked == 2) {
-                                        $("#box-question" + vchecked).css("visibility", "hidden");
-                                        vchecked--;
-                                        $("#box-question" + vchecked).css("visibility", "visible");
+                                        visao = 4;
+                                    } else if (visao == 2) {
+                                        $("#box-question" + visao).css("visibility", "hidden");
+                                        visao--;
+                                        $("#box-question" + visao).css("visibility", "visible");
                                         $("#btnv").css("visibility", "hidden");
-                                        console.log(vchecked);
+                                        console.log(visao);
 
                                     } else {
-                                        $("#box-question" + vchecked).css("visibility", "hidden");
-                                        vchecked--;
-                                        $("#box-question" + vchecked).css("visibility", "visible");
-                                        console.log(vchecked);
+                                        $("#box-question" + visao).css("visibility", "hidden");
+                                        visao--;
+                                        $("#box-question" + visao).css("visibility", "visible");
+                                        console.log(visao);
                                     }
                                 }
 
@@ -269,6 +310,7 @@
 
                             $(".radio-teste").click(function() {
                                 // variável para saber qual questão foi respondida
+
                                 vchecked = parseInt($(this).attr('name'));
                                 console.log(vchecked);
                             });

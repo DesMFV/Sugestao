@@ -121,6 +121,14 @@ if($acao) {
 
         case 'mail':
 
+            $destinatario = $_POST['destinatario'];
+            $mensagem = $_POST['txtSugestao'];
+
+            //método que pega as informações da sugestão pelo ID
+            //inserir dados em uma variável mensagem e enviar para mail.php
+
+        case 'pesquisa':
+
             $assunto = $_GET['assunto'];
             $sugestao = $_GET['sugestao'];
             $nome = $_GET['nome'];
@@ -148,7 +156,6 @@ if($acao) {
 } else {
     include 'view/formulario.php';
 }
-
 
 
 
